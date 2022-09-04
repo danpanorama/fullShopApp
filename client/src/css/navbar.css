@@ -1,0 +1,209 @@
+/* .active{
+    background-color: rgb(255, 255, 255);
+    margin-left: 5px;
+  color: #262626 !important;
+  font-weight: 600;
+    margin-bottom: 25px;
+    border-bottom-left-radius: 20px;
+    
+    border-top-left-radius: 20px;
+}
+.navwith{
+    width: 300px;
+    height: 100vh;
+ transition: all .5s ease;
+  
+    padding: 35px 10px 5px 10px;
+}
+.all_nav{
+  height: 100vh;
+  transition: all .5s ease;
+
+  padding: 35px 10px 5px 10px;
+  width: 100px;
+}
+.navfirstchild{
+    height: 100%;
+    width: 100%;
+  
+}
+.nav_list_box{
+    height: 90%;
+    border-radius: 7px;
+    padding-top: 15px;
+   
+    background-color: rgb(26, 148, 255);
+}
+.navlink{
+    padding: 20px 20px 25px 20px;
+display: flex;
+flex-direction: row;
+align-items: center;
+
+transition: all .5s ease;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+}
+
+.icon{
+    margin-right: 35px;
+}
+.disable{
+    opacity: 0;
+    visibility: hidden;
+  
+    transition: all .5s;
+}
+.openNav{
+    position: absolute;
+    top: 5%;
+    right: 5%;
+} */
+
+.navtopside{
+    height: 3vh;
+    background-color: yellowgreen;
+}
+.navAllBar{
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   background-color: white;
+
+}
+.navbarFirstChild{
+ 
+    padding: 20px 10px 20px 10px;
+}
+.holdNavFirstChild{
+    width: 60%;
+
+}
+.logo{
+    padding-right: 25px;
+}
+
+.allnav{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 4vh;
+
+}
+.allnavchild{
+    width: 90%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    padding: 10px;
+}
+.posrelative{
+    position: relative;
+}
+/* start input search section  */
+
+.inputSearch{
+height: 80%;
+
+}
+.inputsearch{
+height: 90%;
+width: 400px;
+}
+.searchbtn{
+    height: 100%;
+    border: none;
+ padding: 10px 20px 10px 20px;
+ background-color: #262626;
+ color: white;
+}
+
+/* start cart section  */
+.cartNumber{
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 1px solid black;
+  width: 18px;
+  background-color: red;
+  color: white;
+font-weight: 600;
+    border-radius: 50%;
+    font-size: 14px;
+}
+
+
+.navPopUp{
+    height: 400px;
+    width: 40vw;
+    position: absolute;
+    top: 110%;
+    background-color: yellowgreen;
+    right: 0;
+    padding: 14px;
+    border-radius: 3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.firstPopChild{
+    height: 90%;
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    border-radius: 3px;
+    overflow-y: scroll;
+    
+ 
+}
+
+.disabledNav{
+    height: 0;
+    width: 40vw;
+    position: absolute;
+    top: 100%;
+    background-color: rgb(234, 234, 234);
+    right: 0;
+    padding: 14px;
+    border-radius: 3px;
+    visibility: hidden;
+    display: none;
+}
+.element{
+    width: 100%;
+ 
+    
+}
+.imagecard{
+    
+}
+.cartcard{
+    padding: 10px;
+    
+}
+.info{
+   
+}
+.butbuttondiv{
+    height: 10%;
+    transform: translateY(-20px);
+}
+.divbtninc{
+    
+}
+.elecart{
+    padding: 10px;
+    grid-gap: 35px;
+}
+
+
+.centerit{
+    justify-content: space-between;
+    align-items: center;
+}

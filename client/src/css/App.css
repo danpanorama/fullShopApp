@@ -1,0 +1,182 @@
+*{
+  padding: 0;
+  margin: 0;
+}
+body{
+padding: 0;
+margin: 0;
+
+}
+.flexcenter{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flexbetwee{
+  display: flex;
+  flex-direction: column;
+ align-items: flex-start;
+ 
+}
+.between{
+  justify-content: space-between;
+  align-items: center;
+}
+.flexrowcenter{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.flexrow{
+  display: flex;
+  flex-direction: row;
+}
+.flexcol{
+  display: flex;
+  flex-direction: column;
+
+}
+.spaceb{
+  justify-content: space-between;
+}
+
+
+.appall{
+  padding-top: 60px;
+}
+.hw100{
+  height: 100%;
+  width: 100%;
+
+}
+.center{
+  align-items: center;
+  justify-content: center;
+}
+.w100{
+  width: 100%;
+}
+.h100{
+  height: 100%;
+}
+.bc{
+  background-color: aqua;
+}
+.colorlightblue{
+  background-color: aliceblue;
+}
+.inputuser{
+  height: 40px;
+  margin-bottom: 25px;
+}
+.butbuttondivdisabled{
+  padding: 10px 30px 10px 30px;
+  background-color: rgb(127, 127, 127);
+
+  font-weight: 600;
+  border-radius: 3px;
+  border: white 1px solid;
+  color: white;
+}
+.buybtn{
+  padding: 10px 30px 10px 30px;
+  background-color: yellowgreen;
+
+  font-weight: 600;
+  border-radius: 3px;
+  border: white 1px solid;
+  color: white;
+}
+.Link{
+ padding: 10px 20px 10px 20px;
+  text-decoration: none;
+  text-transform: capitalize;
+  font-weight: 500;
+
+}
+.marginr{
+  margin-right: 15px;
+}
+.spacebetween{
+  justify-content: space-between;
+}
+.w30{
+  width: 30%;
+}
+
+.logout{
+  padding: 10px 20px 10px 20px;
+  background-color: rgb(234, 36, 36);
+  font-weight: 600;
+  border-radius: 3px;
+  margin-left: 50px;
+  color: white;
+}
+.gridcol-5{
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.padtext{
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+.boxsize{
+  padding: 10px 20px 10px 20px;
+}
+.cruser{
+  cursor: pointer;
+}
+
+
+.incbtn{
+  width: 35px;
+  height: 35px;
+  background-color: #262626;
+  color: aliceblue;
+  font-size: 16px;
+  text-transform: uppercase;
+  
+  
+}
+.borr3{
+  border-radius: 3px;
+}
+.amountnum{
+  width: 45px;
+  background-color: rgb(196, 196, 196);
+  font-size: 23px;
+}
+
+.goshop{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.text{
+  padding: 5px 7px 5px 7px;
+  background-color: bisque;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.gologbtn{
+  margin-left: 10px;
+  background-color: aliceblue;
+  padding: 5px;
+  border: 1px solid rgb(223, 231, 238);
+  cursor: pointer;
+  
+}
+
+.navphon{
+  display: none;
+  opacity: 0;
+  visibility: hidden;
+  height: 0;
+}

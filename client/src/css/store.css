@@ -1,0 +1,172 @@
+.card{
+  min-height: 28vh;
+    width: 400px;
+    padding: 13px;
+    border: 1px solid rgb(228, 228, 228);
+    border-radius: 3px;
+margin-top: 50px;
+}
+.cardFirstChild{
+    height: 100%;
+    width: 100%;
+}
+.image{
+    height: 76%;
+    width: 100%;
+    background-color: aliceblue;
+
+}
+.img{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+}
+.gridstore{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 15px;
+}
+
+.infobox{
+    justify-content: space-between;
+  height: 20%;
+}
+
+.containert{
+    margin-top: 150px;
+    padding: 20px 20px 20px 20px;
+
+}
+.imageproduct{
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    background-size: cover;
+}
+.allpagedivd{
+    width: 100%;
+    justify-content: space-between;
+}
+.sideA{
+    width: 50%;
+    background-color: rgb(179, 208, 233);
+   height: 100%;
+}
+.sideB{
+    width: 50%;
+    height: 100%;
+    
+}
+
+.boxsize{
+    justify-content: space-around;
+    height: 100%;
+}
+.box_inside{
+    padding: 10px;
+    height: 50vh;
+}
+.namecommend{
+    font-weight: 600;
+    margin-left: 10px;
+
+}
+
+.addtocarddiving{
+   display: flex;
+   
+
+}
+.addfirstChild{
+    border: 1px solid black;
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    width: 50%;
+   
+
+}
+.pricestorepage{
+    font-size: 18px;
+}
+.paddforstprepage{
+    padding: 20px 30px 20px 30px;
+
+}
+.commendsections{
+  margin-bottom: 20px;
+}
+
+.commendsSIde{
+    width: 50%;
+    height: 100%;
+    padding: 15px;
+}
+.commendsbox{
+    margin-top: 25px;
+    background-color: white;
+    padding: 10px;
+    min-height: 80%;
+
+}
+.circule{
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    background-color: aliceblue;
+}
+.commendcurcule{
+    align-items: center;
+    
+
+}
+.commendText{
+    margin-top: 20px;
+    margin-bottom: 10px;
+   
+}
+.padright_commend{
+    padding-left: 15px;
+}
+.commend{
+    background-color: rgb(241, 255, 240);
+    margin-bottom: 15px;
+    padding: 10px;
+}
+.paddpage{
+    padding-left: 150px;
+    padding-right: 150px;
+}
+.margl{
+    margin-left: 15px;
+}
+.margr{
+    margin-right: 15px;
+}
+.bbotoom{
+    border-bottom: 1px solid black;
+}
+.mrb{
+    margin-bottom: 40px;
+
+}
+.commendssection{
+    width: 70%;
+}
+
+.revuseandprice{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+   
+}
+
+.revusediv{
+    justify-content: space-between;
+    padding: 10px 20px 10px 20px;
+    background-color: aliceblue; 
+    width: 30%;
+    border-radius: 3px;
+}

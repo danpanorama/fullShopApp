@@ -1,0 +1,29 @@
+.itemlist{
+    width: 100%;
+    height: 100%;
+    background-color: aliceblue;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 40px;
+}
+.cardstore{
+    padding-top: 25px;
+    padding-bottom: 25px;
+}
+.userbar{
+ 
+    background-color: rgb(247, 255, 240);
+    padding: 25px;
+}
+
+.profile{
+
+   width: 70%;
+   margin: 150px auto;
+}
+.profileSidePage{
+   
+}
+.box{
+    height: 100%;
+}
