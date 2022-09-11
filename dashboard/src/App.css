@@ -1,0 +1,53 @@
+.flexrow{
+  display: flex;
+  flex-direction: row;
+}
+.flexcol{
+  display: flex;
+  flex-direction: column;
+}
+
+.center{
+  justify-content: center;
+  align-items: center;
+}
+.allpagesdiv{
+  margin-left: 50px;
+  margin-right: 50px;
+  margin-top: 50px;
+width: 75%;
+padding: 20px;
+}
+.bc{
+  background-color: rgb(255, 255, 255);
+
+}
+.br{
+  border: 1px solid gainsboro;
+}
+.pad10{
+  padding: 10px;
+}
+.header{
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+.marginbottom{
+  margin-bottom: 15px;
+}
+
+.input{
+  height: 50px;
+  margin-bottom: 10px;
+}
+.btn{
+  height: 50px;
+  text-transform: uppercase;
+}
+.w100{
+  width: 100%;
+}
+td{
+  padding: 15px;
+  text-align: center;
+}

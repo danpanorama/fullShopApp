@@ -1,0 +1,84 @@
+.box{
+    background-color: aquamarine;
+   padding: 20px 20px 20px 20px;
+    margin-top: 40px;
+border-radius: 3px;
+text-transform: uppercase;
+}
+.words{
+    font-size: 1.6rem;
+
+}
+.firstPopChild{
+   
+    
+ 
+}
+.element{
+    width: 100%;
+ min-height:10vh;
+
+    
+}
+.mardgd{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.box_of_pay{
+    padding: 20px;
+}
+.typepay{
+    padding: 20px;
+    border: 1px solid black;
+    border-radius: 3px;
+    margin-bottom: 15px;
+}
+.typepay:hover{
+    background-color: aliceblue;
+}
+.header{
+    margin-bottom: 20px;
+}
+.boxshadow{
+    box-shadow: 3px 10px 30px rgb(210, 207, 207);
+}
+.formshipping{
+   min-width: 30%;
+    margin-top: 50px;
+    padding: 20px;
+}
+.inputshipping{
+    border:  1px solid black;
+    padding-left: 5px;
+}
+.sopping{
+    padding: 20px 20px 20px 20px;
+    background-color: #262626;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    width: 30%;
+    text-align: center;
+
+}
+.bordertop{
+    border-top: 1px solid black;
+    padding-top: 80px;
+   
+}
+.imagecard{
+    
+    height: 100px ;
+    width: 200px;
+}
+.cardLoop{
+  
+}
+
+.flexrowend{
+    text-align: right;
+    margin-top: 50px;
+}
+.eleshadow{
+    box-shadow: 3px 10px 20px rgb(162, 157, 157);
+}

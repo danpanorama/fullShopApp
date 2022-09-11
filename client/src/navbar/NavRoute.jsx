@@ -12,7 +12,14 @@ import StoreProfile from '../pages/profile/storeprofile/StoreProfile'
 import Store from "../pages/store/Store";
 import UpdateProduct from "../pages/profile/storeprofile/functional/UpdateProduct";
 import ProductPage from "../pages/store/ProductPage";
+ import Cart from "../pages/cart/Cart";
+ import Shipping from "../pages/cart/shipping/Shipping";
 
+ import ShippingPrivateReducer from "../router/ShippingPrivateReducer";
+import Paypage from "../pages/paypage/Paypage";
+import PrivateOrederList from "../router/PrivateOrederList";
+import PlaceOrder from "../pages/placeorder/PlaceOrder";
+import Order from "../pages/orderscreen/Order";
 // commit
 function NavRoute() {
   return (
@@ -26,11 +33,26 @@ function NavRoute() {
 <Route path="/login" element={<Login/>} exact/>
 
 <Route path="/createstore" element={<CreateStore/>} exact/>
+
+
 <Route path="/profile" element={ <PrivateRoute />} exact> 
 <Route path="/profile" element={<Profile/>} exact/>
-
-
 </Route>
+
+<Route path="/placeorder" element={ <PrivateOrederList />} exact> 
+<Route path="/placeorder" element={<PlaceOrder/>} exact/>
+</Route>
+
+<Route path="/paypage" element={<Paypage/>} exact/>
+
+
+<Route path="/shipping" element={ <ShippingPrivateReducer />} exact> 
+<Route path="/shipping" element={<Shipping/>} exact/>
+</Route>
+
+<Route path="/order/:id" element={ <Order />} exact/> 
+
+
 <Route path="/storeprofile" element={ <StorePrivateRouter />} exact> 
 <Route path="/storeprofile" element={<StoreProfile/>} exact/>
 
@@ -39,6 +61,7 @@ function NavRoute() {
 <Route path="/store" element={<Store/>} exact/>
 <Route path="/update/:id" element={<UpdateProduct/>} exact/>
 <Route path="/product/:id" element={<ProductPage/>} exact/>
+<Route path="/cart" element={<Cart/>} exact/>
 
 
 

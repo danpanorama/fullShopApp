@@ -7,7 +7,6 @@ const products = require("../../models/sql/sqlpools");
 const getAllMyProducts = async (req, res, next) => {
 try {
   
-console.log(req.query,":::::")
 
 
 

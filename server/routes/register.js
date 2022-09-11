@@ -17,7 +17,6 @@ router.post('/loguot',  function(req, res, next) { console.log(req.body) });
 
 router.post('/createuser',createNewUser.createNewAccount , function(req, res, next) { console.log("don", req.body)});
 
-router.post('/createstore',createNewStore.createNewStore , function(req, res, next) { console.log("don", req.body)});
 
 
 module.exports = router;

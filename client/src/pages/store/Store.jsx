@@ -24,6 +24,7 @@ function Store() {
         .get("/product/items/getall")
         .then((res) => {
           if (res.data.err) {
+
             return setErrState(res.data.err);
           } else {
             setArray(res.data.data);
@@ -33,10 +34,15 @@ function Store() {
         })
         .catch((err) => {
           setErrState(err.err);
+          dispatch({type:actionTypes.BAD_MESSAGE,data:"something wrong"})
+
         });
     } catch (e) {
       console.log(e);
       setErrState("error while sending requast" + e);
+
+      dispatch({type:actionTypes.BAD_MESSAGE,data:e.message})
+
     }
   }
 

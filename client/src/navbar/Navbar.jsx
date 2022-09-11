@@ -7,76 +7,62 @@ import "../css/media.css";
 
 import InputSearch from "../components/nav/InputSearch";
 import NavCart from "../components/nav/NavCart";
-import axiosConfig from "../config/AxiosConfig"
+import axiosConfig from "../config/AxiosConfig";
 import Navphon from "../components/nav/Navphon";
+import NavProfileBtn from "../components/nav/NavProfileBtn";
 
 // commit
 function Navbar(props) {
   const user = useSelector((state) => state.user);
   const card = useSelector((state) => state.item);
   const dispatch = useDispatch();
-  const[ navPopUp,setNavPopUp] = useState(false)
+  const [navPopUp, setNavPopUp] = useState(false);
+  const [navPopUpCard, setNavPopUpCard] = useState(false);
+
   const [amountState, setAmount] = useState(1);
   const [total, settotal] = useState(0);
   const [errState, setErrState] = useState("");
 
-
-
   function logout() {
     dispatch({ type: actionTypes.LOGOUT });
     dispatch({ type: actionTypes.LOGOUT_ITEMS });
-
-    
   }
 
-  function increamNum(e){
+  function increamNum(e) {
+    let data = JSON.parse(e.target.title);
+    console.log(data);
 
-    let data = JSON.parse(e.target.title)
-    console.log(data)
-
-    dispatch({ type: actionTypes.ADD_PRODUCT, data:data ,amount: 1 });
-
-
+    dispatch({ type: actionTypes.ADD_PRODUCT, data: data, amount: 1 });
   }
 
-  function deleteall(e){
-
-
-    dispatch({ type: actionTypes.DELETE_ALL, data:e.target.id  });
-
-
+  function deleteall(e) {
+    dispatch({ type: actionTypes.DELETE_ALL, data: e.target.id });
   }
 
-  function decreamNum(e){
+  function decreamNum(e) {
+    let data = JSON.parse(e.target.title);
+    console.log(data);
 
-     
-      let data = JSON.parse(e.target.title)
-      console.log(data)
-
-      dispatch({ type: actionTypes.REMOVE_PRODUCT, data:data ,amount: 1 });
-  
-
-   
+    dispatch({ type: actionTypes.REMOVE_PRODUCT, data: data, amount: 1 });
   }
 
-  function activeNavPopUp(){
-    
-    setNavPopUp(!navPopUp)
-  }
-  function disabledPopUp(){
-    setNavPopUp(false)
+  function activeNavPopUp() {
+    setNavPopUp(!navPopUp);
   }
 
-
-
+  function activeNavPopUpCard() {
+    setNavPopUpCard(!navPopUpCard);
+  }
+  function disabledPopUp() {
+    setNavPopUp(false);
+  }
 
   return (
-    <div className="navAllBar" >
-      <div className="navtopside"></div>
+    <div className="navAllBar">
       <div className="allnav navbarFirstChild">
         <div className="flexrow allnavchild   ">
           <div className="flexrow  center" onClick={disabledPopUp}>
-            <div className="logo" >
+            <div className="logo">
               <h1>logo</h1>
             </div>
             <NavLink activeclassname="active_Link" className="Link" to="/">
@@ -89,47 +75,23 @@ function Navbar(props) {
               about
             </NavLink>
           </div>
-       <InputSearch />
+          <InputSearch />
 
           <div className="flexrow ">
             {user.isLog ? (
               <div className="flexrow center">
-                <NavLink
-                  activeclassname="active_Link"
-                  className="Link"
-                  to="/profile"
-                >
-                  profile{" "}
-                 
-                </NavLink>
-                {user.user.isStore == "yes" ? (
-                  <NavLink
-                    activeclassname="active_Link"
-                    className="Link"
-                    to="/storeprofile"
-                  >
-                    store profile
-                  </NavLink>
-                ) : (
-                  ""
-                )}
-                 <div  className="flexrow posrelative Link">
-                 <NavCart disabledPopUp={disabledPopUp} deleteall={deleteall} setAmount={setAmount} decreamNum={decreamNum} increamNum={increamNum} isActive={navPopUp}  cart={card.cardItems} />
-    <div onClick={activeNavPopUp} className="flexrow cruser">
-    <p>cart</p>
-                  {card.cardItems && card.cardItems.length > 0
-                    ? <div className="cartNumber flexcenter"><p className="cartNumberin">{card.cardItems.length}</p>
-     
-                    </div>
-                    : 0}
-    </div>
-                </div>
+                <NavProfileBtn
+                  user={user}
+                  navPopUpCard={navPopUpCard}
+                  activeNavPopUpCard={activeNavPopUpCard}
+                />
+
                 <div onClick={logout} className="logout">
                   <p>logout</p>
                 </div>
               </div>
             ) : (
-              <div className="flexrow ">
+              <div className="flexrow center ">
                 <NavLink
                   activeclassname="active_Link"
                   className="Link"
@@ -142,24 +104,46 @@ function Navbar(props) {
                   className="Link"
                   to="/createuser"
                 >
-                  create
-                </NavLink>
-
-                <NavLink
-                  activeclassname="active_Link"
-                  className="Link"
-                  to="/createstore"
-                >
-                  create store
+                  REGISTER
                 </NavLink>
               </div>
             )}
+
+            <div className="flexrow posrelative Link">
+              {/* <NavCart disabledPopUp={disabledPopUp} deleteall={deleteall} setAmount={setAmount} decreamNum={decreamNum} increamNum={increamNum} isActive={navPopUp}  cart={card.cardItems} /> */}
+
+              <div className="flexrow cruser">
+                <NavLink
+                  activeclassname="active_Link"
+                  className="Link"
+                  to="/cart"
+                >
+                  cart{" "}
+                  {card.cardItems && card.cardItems.length > 0 ? (
+                    <div className="cartNumber flexcenter">
+                      <p className="cartNumberin">{card.cardItems.length}</p>
+                    </div>
+                  ) : (
+                    0
+                  )}
+                </NavLink>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-     
-<Navphon card={card} activeNavPopUp={activeNavPopUp} disabledPopUp={disabledPopUp} deleteall={deleteall} setAmount={setAmount} decreamNum={decreamNum} increamNum={increamNum} isActive={navPopUp}  cart={card.cardItems}/>
-      
+
+      <Navphon
+        card={card}
+        activeNavPopUp={activeNavPopUp}
+        disabledPopUp={disabledPopUp}
+        deleteall={deleteall}
+        setAmount={setAmount}
+        decreamNum={decreamNum}
+        increamNum={increamNum}
+        isActive={navPopUp}
+        cart={card.cardItems}
+      />
     </div>
   );
 }

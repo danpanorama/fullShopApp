@@ -1,0 +1,37 @@
+.grid-3{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: beige;
+    align-items: center;
+    justify-content: center;
+    padding: 30px;
+    padding-bottom: 50px;
+}
+.imagecurcule{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    background-color: aliceblue;
+    margin-right: 35px;
+}
+.oneof{
+    height: 100%;
+   
+}
+.info{
+    height: 100%;
+}
+.table{
+    border: 1px solid black;
+   
+  
+    width: 100%;
+}
+.allpaybox
+{
+    width: 30%;
+    margin-left: 20px;
+}
+.flextop{
+   
+}

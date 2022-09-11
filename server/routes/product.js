@@ -49,7 +49,7 @@ const upload = multer({
 
 /* GET users listing. */
 router.get('/items/get',getAllMyItems.getAllMyProducts, function(req, res, next) {
-  res.json({msg:'respond with a resource'});
+  
 });
 
 router.get('/items/getall',getAllProducts.getAllProducts, function(req, res, next) {

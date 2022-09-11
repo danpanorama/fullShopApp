@@ -7,12 +7,15 @@ import { Navigate } from "react-router-dom";
 import {useDispatch,useSelector} from "react-redux";
 import * as actionTypes from "../../store/Actions";
 import { NavLink } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 function Login() {
   
   const dispatch = useDispatch();
   const [isLoggd, setisLoggd] = useState(false);
   const [errState, setErrState] = useState("");
+  let location = useLocation();
+
   const login = useFormik({
     initialValues:{
       name: "", 
@@ -54,7 +57,13 @@ function Login() {
 
   
   if(isLoggd){
-    return <Navigate to={{pathname:"/home"}}/>
+    if(location.state == 'way to buy'){
+      return <Navigate to={{pathname:"/cart"}}/>
+
+    }else{
+      return <Navigate to={{pathname:"/home"}}/>
+
+    }
   }
 
 

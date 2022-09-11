@@ -40,7 +40,16 @@ const delproduct = (id) => {
 const selectProductById = (id) => {
   return pool.execute(`SELECT * FROM products where storeId = ? `, [id]);
 };
+const selectOrderById = (id) => {
+  return pool.execute(`SELECT * FROM storeapp.order where userid = ? `, [id]);
+};
 
+const selectAllOrders = () => {
+  return pool.execute(`SELECT * FROM storeapp.order  `);
+};
+const selectOrderByPId = (id) => {
+  return pool.execute(`SELECT * FROM storeapp.order where id = ? `, [id]);
+};
 const getProductById = (id) => {
   return pool.execute(`SELECT * FROM products where id = ? `, [id]);
 };
@@ -48,13 +57,13 @@ const getProductById = (id) => {
 const getAllProduct = () => {
   return pool.execute(`SELECT * FROM products  `);
 };
-const insertNewitem = (name,description, cat, storeId, price, commends, likes, img) => {
+const insertNewitem = (name, description, cat, storeId, price, commends, likes, img) => {
   return pool.execute(
     `INSERT INTO products 
     (name,description, cat, storeId, price,commends,likes,img) 
     VALUES 
     (?, ?, ?, ?, ?,?,?,?)`,
-    [name,description, cat, storeId, price, commends, likes, img]
+    [name, description, cat, storeId, price, commends, likes, img]
   );
 };
 
@@ -78,6 +87,8 @@ const insertNewUser = (name, password, email, date, isStore) => {
 //     [name, password, email, date,isStore]
 //   );
 // };
+
+
 
 const selectUserById = (id) => {
   return pool.execute(`SELECT * FROM users  WHERE password = ? `, [id]);
@@ -113,7 +124,7 @@ const selectLike = (txt) => {
 
 
 
-const updateProduct = (name,description,cat,storeId,price,commends,likes,img,id ) => {
+const updateProduct = (name, description, cat, storeId, price, commends, likes, img, id) => {
   return pool.execute(
     `UPDATE products 
     SET name = ?,description = ?,
@@ -123,19 +134,19 @@ const updateProduct = (name,description,cat,storeId,price,commends,likes,img,id 
      likes = ?,
      img = ?
     WHERE id = ? `,
-    [name,description,cat,storeId,price,commends,likes,img,id]
+    [name, description, cat, storeId, price, commends, likes, img, id]
   );
 };
 
 
-const updateCommend = (commends,id ) => {
+const updateCommend = (commends, id) => {
   return pool.execute(
     `UPDATE products 
     SET 
     commends = ?
    
     WHERE id = ? `,
-    [commends,id]
+    [commends, id]
   );
 };
 
@@ -143,6 +154,44 @@ const updateCommend = (commends,id ) => {
 // const selectProduct = () => {
 //   return pool.execute(`SELECT * FROM product WHERE name = ? OR cat = ? `);
 // };
+
+
+
+
+// start the order section 
+
+const insertNewOrder = (username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd) => {
+  return pool.execute(
+    `INSERT INTO storeapp.order
+    (username , useremail, userid, products, shipping,  price,  ispaid , datepaid , isdeliverd , datedeliverd) 
+    VALUES 
+    (?, ?, ?, ?, ? , ? , ? , ? , ? , ? )`,
+    [username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd]
+  );
+};
+
+const insertNewOrder2 = (username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd) => {
+  return pool.execute(
+    `INSERT INTO storeapp.order
+    (username , useremail, userid, products, shipping,  price,  ispaid , datepaid , isdeliverd , datedeliverd) 
+    VALUES 
+    (?, ?, ?, ?, ? , ? , ? , ? , ? , ? )`,
+    [username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd]
+  );
+};
+
+
+const getMyOrder = (id) => {
+  return pool.execute(`SELECT * FROM order WHERE userid = ? `, [id]);
+};
+
+
+
+
+
+
+
+module.exports.getMyOrder = getMyOrder;
 
 
 
@@ -161,6 +210,8 @@ module.exports.getUserById = getUserById;
 module.exports.getProductById = getProductById;
 
 module.exports.getAllProduct = getAllProduct;
+module.exports.selectOrderByPId = selectOrderByPId;
+
 
 module.exports.updateProduct = updateProduct;
 
@@ -168,7 +219,16 @@ module.exports.delproductbyid = delproductbyid;
 
 
 module.exports.updateCommend = updateCommend;
+module.exports.selectOrderById = selectOrderById;
+
 
 
 module.exports.selectLike = selectLike;
+
+
+module.exports.insertNewOrder2 = insertNewOrder2;
+
+module.exports.insertNewOrder = insertNewOrder;
+
+module.exports.selectAllOrders = selectAllOrders;
 

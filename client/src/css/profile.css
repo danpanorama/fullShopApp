@@ -17,13 +17,56 @@
 }
 
 .profile{
-
-   width: 70%;
-   margin: 150px auto;
+   margin: 100px auto;
 }
+
 .profileSidePage{
-   
+    margin-left: 20px;
+}
+.boxsideao{
+    width: 40%;
+    background-color: aliceblue;
 }
 .box{
     height: 100%;
+}
+.bacclicked{
+    background-color: rgb(104, 185, 255) !important;
+}
+.bacclicked:hover{
+    background-color: rgb(171, 216, 255) !important;
+
+}
+.box_prof{
+  width: 100%;
+}
+.imagesProf{
+    height: 150px;
+    background-color: aquamarine;
+    position: relative;
+}
+.profileimage{
+    height: 100px;
+    width: 100px;
+    background-color: aliceblue;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -15px;
+    left: 25px;
+
+}
+.padbutun{
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+.userInforProf{
+    padding: 40px;
+}
+.absulotcolorprof{
+  
+     padding: 10px 20px 10px 20px;
+     border-top: 1px solid black;
+}
+.absulotcolorprof:hover{
+    background-color: rgb(173, 217, 254);
 }

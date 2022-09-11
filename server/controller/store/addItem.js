@@ -12,10 +12,7 @@ const addNewItem = async (req, res, next) => {
     const date = await new Date();
    
     req.body = JSON.parse(req.body.user);
-    let CheckingStoreName = await products.getUserById(req.body.storeId);
-
-    if (CheckingStoreName[0].length > 0 && CheckingStoreName[0][0].isStore == 'yes') {
-     
+ console.log(req.body)
 
       let commends = '[]'
       let likes = "[]"
@@ -48,11 +45,7 @@ const addNewItem = async (req, res, next) => {
           data: items[0][0]
         });
       }
-    } else {
-      res.json({
-        msg: 'cannot find this store'
-      })
-    }
+    
 
 
 

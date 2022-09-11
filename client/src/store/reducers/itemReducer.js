@@ -4,6 +4,7 @@ const initialState = {
   item: [],
   itemLength: 0,
   cardItems: [],
+  shipping:{}
 };
 
 const reducer = (state = initialState, action) => {
@@ -17,8 +18,21 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
       itemsRed.cardItems = [];
+      itemsRed.shipping = {}
       localStorage.setItem("card", undefined);
       return itemsRed;
+
+
+      case actionTypes.ADD_SHIPPING:
+        const addshipping = {
+          ...state,
+        };
+        addshipping.shipping = action.data ;
+        let json = JSON.stringify(action.data)
+
+
+        localStorage.setItem("address", json);
+        return addshipping;
 
       // case actionTypes.LOGOUT:
       //   const logout = {
@@ -124,11 +138,23 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
       let data = localStorage.getItem('card');
-      if (data == undefined || data == "undefined") {
+      let address = localStorage.getItem('address');
+
+
+      if (data == undefined || data == "undefined" ) {
         return setStete
       } else {
+
         let jsondata = JSON.parse(data);
         setStete.cardItems = jsondata;
+      }
+
+
+      if(address == undefined || address == "undefined"){
+        return setStete
+      }else{
+        let dataaddress = JSON.parse(address);
+        setStete.shipping = dataaddress
       }
 
       return setStete;

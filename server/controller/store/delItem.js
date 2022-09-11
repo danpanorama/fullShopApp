@@ -7,9 +7,9 @@ const products = require("../../models/sql/sqlpools");
 const delItem = async (req, res, next) => {
 try {
   
-    if(req.body.productStoreId == req.body.storeId){
+    if(req.body.isStore == true){
 
-        let del = await products.delproductbyid(req.body.id,req.body.storeId);
+        let del = await products.delproduct(req.body.id);
         // res.json({msg:'delete sucssece'})
         next()
 

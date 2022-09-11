@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 import ProductPagecomp from "./ProductPagecomp";
 import Commends from "../../components/store/Commends";
 import {useFormik} from "formik"
+import Errmsg from "../../components/errmsg/Errmsg";
 import axiosConfig from "../../config/AxiosConfig"
 
 function ProductPage(props) {
@@ -27,7 +28,7 @@ function ProductPage(props) {
   }
 
   useEffect(()=>{
-    console.log(location.state.data)
+   
     SetProducte(location.state.data)
   },[])
 
@@ -55,17 +56,23 @@ function ProductPage(props) {
         }else{
          
         
-           console.log(res.data)
+           
           
            SetProducte(res.data.item)
+           dispatch({type:actionTypes.GOOD_MESSAGE,data:"item removed to your card"})
+
         }
       })
       .catch((err) => {
         setErrState(err.err);
+        dispatch({type:actionTypes.BAD_MESSAGE,data:err.err})
+
       });
     }catch(e){
       console.log(e)
       setErrState("error while sending requast"+e);
+      dispatch({type:actionTypes.BAD_MESSAGE,data:e.message})
+
     }
 
   }
@@ -93,17 +100,22 @@ function ProductPage(props) {
         }else{
          
         
-           console.log(res.data)
-          
            SetProducte(res.data.item)
+           dispatch({type:actionTypes.GOOD_MESSAGE,data:"commend was add"})
+
         }
       })
       .catch((err) => {
         setErrState(err.err);
+        dispatch({type:actionTypes.BAD_MESSAGE,data:"something wrong"})
+
+
       });
     }catch(e){
       console.log(e)
       setErrState("error while sending requast"+e);
+      dispatch({type:actionTypes.BAD_MESSAGE,data:e.message})
+
     }
   }});
   function decreamNum(){
@@ -113,18 +125,19 @@ function ProductPage(props) {
     }
   }
   function addToCard(e) {
-   
-
-    if (user.isLog) {
-
       dispatch({ type: actionTypes.ADD_PRODUCT, data: location.state.data,amount: amountState });
-    } else {
-      setIsNeedToLOg(true);
-    }
+      dispatch({type:actionTypes.GOOD_MESSAGE,data:"item was add to you cart"})
+      setTimeout(() => {
+        dispatch({type:actionTypes.RESET_MSG,}) 
+      }, 5000);
+
+
+   
+      
+    
   }
-  if (isNeedToLog) {
-    return <Navigate to={{ pathname: "/login" }} />;
-  }
+ 
+  
 
   return (
 <div className="paddpage">

@@ -3,7 +3,7 @@ import '../../css/store.css';
 import {  Link } from "react-router-dom";
 
 function Card(props) {
-    let immg = props.e.img.split('upload');
+    let immg = props.e?props.e.img.split('upload'):"";
     let url = 'http://localhost/product/file'+immg[1]
   return (
     <div className="card">
