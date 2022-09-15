@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 
 
@@ -15,13 +16,15 @@ function OrderList(props){
                 </tr>
                 {props.lists? props.lists.map((e)=>{
                     return(
-                        <tr className="tr">
-                            <td>{e.id}</td>
+                       
+                        <tr className="tr" key={e.id}> 
+                            <td><Link to={{pathname:'/ordernumber/'+e.id}}state={{data:e}} >{e.id}</Link></td>
                             <td>{e.username}</td>
                             <td>{e.useremail}</td>
                             <td>{e.price}</td>
                             <td>{e.ispaid}</td>
                         </tr>
+                        
                     )
                 }) :""}
             </table>

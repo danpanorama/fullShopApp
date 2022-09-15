@@ -1,4 +1,4 @@
-import {  NavLink } from "react-router-dom";
+import {  Link } from "react-router-dom";
 
 import '../../css/App.css'
 
@@ -14,8 +14,8 @@ function Typepay(props) {
 <h1>how do you wanna pay</h1>
     </div>
     <div className="paylist">
-    <NavLink to="/placeorder"  >     <p className="typepay">visa</p></NavLink>
-    <NavLink to="/placeorder"  >  <p className="typepay">paypal</p></NavLink>
+    <Link   to={{pathname:"/placeorder",state:"visa"}}  >     <p className="typepay">visa</p></Link>
+    <Link to={{pathname:"/placeorder",state:"paypal"}}   >  <p className="typepay">paypal</p></Link>
 
     </div>
   

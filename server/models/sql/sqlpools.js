@@ -150,6 +150,18 @@ const updateCommend = (commends, id) => {
   );
 };
 
+const updateLikes = (like, id) => {
+  return pool.execute(
+    `UPDATE products 
+    SET 
+    likes = ?
+   
+    WHERE id = ? `,
+    [like, id]
+  );
+};
+
+
 
 // const selectProduct = () => {
 //   return pool.execute(`SELECT * FROM product WHERE name = ? OR cat = ? `);
@@ -159,6 +171,19 @@ const updateCommend = (commends, id) => {
 
 
 // start the order section 
+
+
+
+const updateOrderPay = (ispaid,datepaid, id) => {
+  return pool.execute(
+    `UPDATE storeapp.order 
+    SET 
+    ispaid = ? , datepaid = ?
+   
+    WHERE id = ? `,
+    [ispaid,datepaid, id]
+  );
+};
 
 const insertNewOrder = (username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd) => {
   return pool.execute(
@@ -170,13 +195,13 @@ const insertNewOrder = (username, useremail, userid, products, shipping, price, 
   );
 };
 
-const insertNewOrder2 = (username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd) => {
+const insertNewOrder2 = (username, useremail, userid, products, shipping, price,yourDate, ispaid, datepaid, isdeliverd, datedeliverd) => {
   return pool.execute(
     `INSERT INTO storeapp.order
-    (username , useremail, userid, products, shipping,  price,  ispaid , datepaid , isdeliverd , datedeliverd) 
+    (username , useremail, userid, products, shipping,  price,date,  ispaid , datepaid , isdeliverd , datedeliverd) 
     VALUES 
-    (?, ?, ?, ?, ? , ? , ? , ? , ? , ? )`,
-    [username, useremail, userid, products, shipping, price, ispaid, datepaid, isdeliverd, datedeliverd]
+    (?, ?, ?, ?,?, ? , ? , ? , ? , ? , ? )`,
+    [username, useremail, userid, products, shipping, price,yourDate, ispaid, datepaid, isdeliverd, datedeliverd]
   );
 };
 
@@ -185,10 +210,16 @@ const getMyOrder = (id) => {
   return pool.execute(`SELECT * FROM order WHERE userid = ? `, [id]);
 };
 
+const getMyOrderByOrderId = (id) => {
+  return pool.execute(`SELECT * FROM storeapp.order WHERE id = ? `, [id]);
+};
 
 
 
 
+
+
+module.exports.getMyOrderByOrderId = getMyOrderByOrderId;
 
 
 module.exports.getMyOrder = getMyOrder;
@@ -197,6 +228,10 @@ module.exports.getMyOrder = getMyOrder;
 
 module.exports.selectUser = selectUser;
 module.exports.selectUserById = selectUserById;
+module.exports.updateLikes = updateLikes;
+
+module.exports.updateOrderPay = updateOrderPay;
+
 module.exports.cheakUserEmail = cheakUserEmail;
 module.exports.cheakUserName = cheakUserName;
 module.exports.updateUser = updateUser;

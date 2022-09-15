@@ -5,6 +5,7 @@ export const LOG = "LOG";
 export const STILL = "STILL";
 
 export const DELET = "DELET";
+export const UPDATE_LIKE = "UPDATE_LIKE";
 
 
 export const LOGIN = "LOGIN";

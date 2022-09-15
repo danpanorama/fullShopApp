@@ -1,8 +1,7 @@
 import * as actionTypes from "../Actions";
 
 const initialState = {
-  item: [],
-  itemLength: 0,
+  
   cardItems: [],
   shipping:{}
 };
@@ -20,6 +19,7 @@ const reducer = (state = initialState, action) => {
       itemsRed.cardItems = [];
       itemsRed.shipping = {}
       localStorage.setItem("card", undefined);
+      localStorage.setItem('address',undefined);
       return itemsRed;
 
 

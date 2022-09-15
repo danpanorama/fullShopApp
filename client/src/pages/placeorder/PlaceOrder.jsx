@@ -8,15 +8,17 @@ import axiosConfig from "../../config/AxiosConfig"
 import * as actionTypes from "../../store/Actions";
 import { Navigate } from "react-router-dom";
 import { useState } from 'react';
+import { useLocation } from "react-router-dom";
 
 function PlaceOrder(props) {
-  const user =  useSelector((state)=>state.user);
+  const user =  useSelector((state)=>state.user); 
 const item =  useSelector((state)=>state.item);
 const dispatch = useDispatch();
 const [isbut,setisbuy] = useState(false)
 const [idid,setidid] = useState(0)
 
-
+let location = useLocation();
+console.log(location)
 
 async function buyItem(){
   let cardItems = item.cardItems;
@@ -37,7 +39,7 @@ async function buyItem(){
      console.log(res.data)
      setisbuy(true)
      setidid(res.data.id)
-     dispatch({type:actionTypes.LOGOUT_ITEMS})
+     
 
       
  
@@ -54,7 +56,7 @@ if(isbut){
 
   return (
     <div className="   ">
-       <CostumerInfo user={user} item={item} />
+       <CostumerInfo pyment={{ispaid:"no",isdeliverd:'no',price:"0"}} user={user} item={item} />
 
  <h1>placeordare</h1>
  <div className="flexrow flextop">

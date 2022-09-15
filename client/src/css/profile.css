@@ -70,3 +70,11 @@
 .absulotcolorprof:hover{
     background-color: rgb(173, 217, 254);
 }
+
+.paid{
+    background-color: rgba(153, 205, 50, 0.654);
+}
+td{
+    padding: 10px;
+    text-align: center;
+}

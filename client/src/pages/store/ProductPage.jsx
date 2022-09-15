@@ -33,10 +33,39 @@ function ProductPage(props) {
   },[])
 
 
+  async function likeProduct(e){
+    try{
+
+       await
+      axiosConfig
+      .post("/users/like", 
+      {user:user.user,id:e.target.id,rating:e.target.value}
+      )
+      .then((res) => {
+     
+          console.log(res.data);
+          productState.likes =  res.data.review
+          dispatch({type:actionTypes.GOOD_MESSAGE,data:"thank you for your review"})
+
+
+        
+      })
+      .catch((err) => {
+        setErrState(err.err);
+        dispatch({type:actionTypes.BAD_MESSAGE,data:err.err})
+
+      });
+    }catch(e){
+      console.log(e)
+      setErrState("error while sending requast"+e);
+      dispatch({type:actionTypes.BAD_MESSAGE,data:e.message})
+
+    }
+
+  }
 
   async function removecommend(e){
     try{
-      console.log(e)
       let data = JSON.parse(e.target.title)
   
       data.itemId = location.state.data.id;
@@ -56,10 +85,10 @@ function ProductPage(props) {
         }else{
          
         
-           
+           console.log(res.data)
           
            SetProducte(res.data.item)
-           dispatch({type:actionTypes.GOOD_MESSAGE,data:"item removed to your card"})
+           dispatch({type:actionTypes.GOOD_MESSAGE,data:"you remove commend"})
 
         }
       })
@@ -141,7 +170,7 @@ function ProductPage(props) {
 
   return (
 <div className="paddpage">
-<ProductPagecomp amountState={amountState} product={location.state.data} decreamNum={decreamNum} increamNum={increamNum}  addToCard={addToCard} />
+<ProductPagecomp likeProduct={likeProduct} islog={user.isLog} amountState={amountState} product={location.state.data} decreamNum={decreamNum} increamNum={increamNum}  addToCard={addToCard} />
 <Commends remove={removecommend}islog={user} id={user.user.id} addCommend={addCommend} product={productState} />
 </div>
     );

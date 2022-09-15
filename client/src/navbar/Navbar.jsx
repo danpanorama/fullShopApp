@@ -84,11 +84,10 @@ function Navbar(props) {
                   user={user}
                   navPopUpCard={navPopUpCard}
                   activeNavPopUpCard={activeNavPopUpCard}
+                  logout={logout}
                 />
 
-                <div onClick={logout} className="logout">
-                  <p>logout</p>
-                </div>
+            
               </div>
             ) : (
               <div className="flexrow center ">

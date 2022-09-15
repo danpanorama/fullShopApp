@@ -6,13 +6,14 @@ const orders = require("../../models/sql/sqlpools");
 const newOrder = async (req, res, next) => {
     try {
         let shipping = JSON.stringify(req.body.shipping);
-        let datenow = new Date()
 
 
 
        let total = req.body.shipping.total+(0.17*100) + 10
        let ispaid = 'no';
        let dateoo = '00.00.00'
+       let yourDate = new Date()
+yourDate.toISOString().split('T')[0]
       
 
         let inseretNewOrder = await orders.insertNewOrder2(
@@ -22,6 +23,7 @@ const newOrder = async (req, res, next) => {
             req.body.item,
             shipping,
             total,
+            yourDate,
             ispaid,
             dateoo,
             ispaid,

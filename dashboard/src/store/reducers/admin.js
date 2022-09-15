@@ -17,7 +17,7 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
 
 
-    case actionTypes.LOGIN:
+    case actionTypes.LOGIN_ADMIN:
       const newState = {
         ...state
       };
@@ -28,7 +28,7 @@ const reducer = (state = initialState, action) => {
       return newState
 
 
-    case actionTypes.LOGOUT:
+    case actionTypes.LOGOUT_ADMIN:
       const loguot = {
         ...state
       };

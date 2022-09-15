@@ -30,7 +30,7 @@ revuse:
                </div>
              
                 <div className="price padtext">
-                    {props.e.price}
+                  <strong>{props.e.price}$</strong>  
                     
                 </div>
               

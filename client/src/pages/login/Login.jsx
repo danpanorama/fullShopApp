@@ -58,7 +58,7 @@ function Login() {
   
   if(isLoggd){
     if(location.state == 'way to buy'){
-      return <Navigate to={{pathname:"/cart"}}/>
+      return <Navigate to={{pathname:"/shipping"}}/>
 
     }else{
       return <Navigate to={{pathname:"/home"}}/>

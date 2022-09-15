@@ -3,7 +3,6 @@ import "../../css/profile.css";
 
 
 function ProductPagecomp(props) {
-
     let immg = props.product.img.split('upload');
     let url = 'http://localhost/product/file'+immg[1]
 
@@ -28,7 +27,28 @@ function ProductPagecomp(props) {
                 </div>
                 <div className="revuseandprice flexrow">
               <div className="revusediv flexrow marginbottom40">
-             <p className="rev"> revuse </p><button>like</button>
+             <p className="rev"> revuse 
+             {JSON.parse(props.product.likes).map((e)=>{  
+              let total = 0;
+              total = total +  parseInt(e.rating)
+               return(
+                <div className="g">
+                  { total}
+                </div>
+               )
+                })} 
+                </p>
+  {props.islog?
+ <select name="" onChange={props.likeProduct} id={props.product.id}>
+ <option value="1">1</option>
+ <option value="2">2</option>
+ <option value="3">3</option>
+ <option value="4">4</option>
+ <option value="5">5</option>
+
+</select>
+:"you need to log in"  
+}
               </div>
                 </div>
 

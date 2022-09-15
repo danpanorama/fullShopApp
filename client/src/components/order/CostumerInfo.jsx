@@ -2,7 +2,7 @@
 
 function CostumerInfo(props) {
 
-
+console.log(props)
 
   return (
   
@@ -35,6 +35,12 @@ function CostumerInfo(props) {
             <div className="imagecurcule"></div>
             <div className="info">
                 <h3>payment info</h3>
+                <p>pay method: {props.pyment.ispaid  || ""}</p>
+                <p>deliverd: {props.pyment.isdeliverd ||""}</p>
+                <p>price: {props.pyment.price  ||""}</p>
+                <p  >is payed: {props.pyment.ispaid  || ""}</p>
+
+
                 </div>
         </div>
    

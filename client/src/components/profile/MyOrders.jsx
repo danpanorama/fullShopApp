@@ -1,35 +1,45 @@
 import React, { useState } from "react";
-import {  Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 function MyOrders(props) {
   const [preview, setpreview] = useState(null);
 
-console.log(props.list)
+  console.log(props.list);
   return (
     <div className="">
-        <div className="">
-            <div className="flexcol">
-                {props.list.length > 0 ?props.list.map((e)=>{
-                    return(
-                        <div className="orderProducts">
-                                  <Link  state={{data:e.id}}  to={{
-                        pathname: "/order/"+e.id}
-                      
-                     
-                      }  ><p> {e.id}</p></Link>
-                           
-                           <p> {e.ispaid}</p>
-                           <p> {e.price}</p>
-                          
-                        </div>
-                    )
-                }):"no items found"}
-            </div>
-        </div>
+      <div className="">
+        <table className="table  ">
+          <tr>
+            <th>id</th>
+            <th>is payed</th>
+            <th>price</th>
+          </tr>
+          {props.list.length > 0
+            ? props.list.map((e) => {
+                return (
+                  <tbody className={e.ispaid == 'yes' ? "paid":"notpaid"}>
+                    <tr className="brbottom">
+                      <td>
+                        {" "}
+                        <Link
+                          state={{ data: e.id }}
+                          to={{
+                            pathname: "/order/" + e.id,
+                          }}
+                        >
+                          <p> {e.id}</p>
+                        </Link>
+                      </td>
 
-
-
-
+                      <td> {e.ispaid}</td>
+                      <td> {e.price}</td>
+                    </tr>
+                  </tbody>
+                );
+              })
+            : "no items found"}
+        </table>
+      </div>
     </div>
   );
 }

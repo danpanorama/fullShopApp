@@ -62,6 +62,22 @@ const reducer = (state = initialState, action) => {
         setPRoductsStete.item =  action.data.data
   
         return setPRoductsStete;
+
+
+        case actionTypes.UPDATE_LIKE:
+          const update = {
+            ...state,
+          };
+          console.log(action.data);
+          for(let i = 0; i < update.item.length; i++){
+            if(update.item[i].id == action.data.id){
+              update.item[i].likes = action.data.review
+            }
+          }
+
+         
+    
+          return update;
   
 
 

@@ -21,9 +21,10 @@ function NavProfileBtn(props) {
                 <NavLink activeclassname="active_Link" className=" cardlinkr  brbottom" to="/profile">
               profile
             </NavLink>
-            <NavLink activeclassname="active_Link" className="  cardlinkr" to="/placeorder">
-              orderList
-            </NavLink>
+
+            <div className="cardlinkr logout" onClick={props.logout}>
+              logout
+            </div>
                 </div>
    </div>
   );

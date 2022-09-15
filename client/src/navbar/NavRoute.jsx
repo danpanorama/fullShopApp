@@ -49,15 +49,15 @@ function NavRoute() {
 <Route path="/shipping" element={ <ShippingPrivateReducer />} exact> 
 <Route path="/shipping" element={<Shipping/>} exact/>
 </Route>
+<Route path="//order/:id" element={ <PrivateRoute />} exact> 
 
 <Route path="/order/:id" element={ <Order />} exact/> 
-
+</Route>
 
 <Route path="/storeprofile" element={ <StorePrivateRouter />} exact> 
 <Route path="/storeprofile" element={<StoreProfile/>} exact/>
-
-
 </Route>
+
 <Route path="/store" element={<Store/>} exact/>
 <Route path="/update/:id" element={<UpdateProduct/>} exact/>
 <Route path="/product/:id" element={<ProductPage/>} exact/>

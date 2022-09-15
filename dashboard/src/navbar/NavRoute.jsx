@@ -6,6 +6,10 @@ import AddProduct from '../pages/addproducts/AddProduct';
 import ProductPage from "../pages/productlist/ProductPage";
 import UpdateProduct from "../pages/updateproducts/UpdateProducts";
 import Order from "../pages/order/Order";
+import OneOrderPage from "../pages/order/OneOrderPage";
+import LoginAdmin from "../pages/login/LoginAdmin";
+import PrivateRoute from "../routes/PrivateRout";
+
 
 
 function NavRoute() {
@@ -18,16 +22,36 @@ function NavRoute() {
 
 
 <Routes>
+
+<Route path="/login" element={<LoginAdmin/>} exact/>
+
+
 <Route path="/" element={<Home/>} exact/>
 <Route path="/*" element={<Home/>} exact/>
 
 <Route path="/users" element={<Users/>} exact/>
 
 
-<Route path="/addproduct" element={<AddProduct/>} exact/>
 <Route path="/products" element={<ProductPage/>} exact/>
 <Route path="/updateproduct/:id" element={<UpdateProduct/>} exact/>
+
+
+
+
+
+<Route path="/orders" element={ <PrivateRoute />} exact> 
 <Route path="/orders" element={<Order/>} exact/>
+</Route>
+
+<Route path="/ordernumber/:id" element={ <PrivateRoute />} exact> 
+<Route path="/ordernumber/:id" element={<OneOrderPage/>} exact/>
+</Route>
+
+<Route path="/addproduct" element={ <PrivateRoute />} exact> 
+<Route path="/addproduct" element={<AddProduct/>} exact/>
+</Route>
+
+
 
 
 
