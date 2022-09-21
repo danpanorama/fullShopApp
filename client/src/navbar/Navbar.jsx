@@ -1,67 +1,41 @@
 import { Routes, NavLink, Route, Router } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import * as actionTypes from "../store/Actions";
 import "../css/navbar.css";
 import "../css/media.css";
 
 import InputSearch from "../components/nav/InputSearch";
-import NavCart from "../components/nav/NavCart";
 import axiosConfig from "../config/AxiosConfig";
-import Navphon from "../components/nav/Navphon";
 import NavProfileBtn from "../components/nav/NavProfileBtn";
+import {userloguot} from '../Redux/Actions/userAction'
+import {clearCart} from '../Redux/Actions/cartAction'
+
 
 // commit
 function Navbar(props) {
-  const user = useSelector((state) => state.user);
-  const card = useSelector((state) => state.item);
+  const users = useSelector((state) => state.users);
+  const cart = useSelector((state) => state.cart);
+  const [popUpNav,setPopUpNav]= useState(false)
   const dispatch = useDispatch();
-  const [navPopUp, setNavPopUp] = useState(false);
-  const [navPopUpCard, setNavPopUpCard] = useState(false);
 
-  const [amountState, setAmount] = useState(1);
-  const [total, settotal] = useState(0);
-  const [errState, setErrState] = useState("");
 
   function logout() {
-    dispatch({ type: actionTypes.LOGOUT });
-    dispatch({ type: actionTypes.LOGOUT_ITEMS });
+    dispatch(userloguot());
+    dispatch(clearCart());
   }
 
-  function increamNum(e) {
-    let data = JSON.parse(e.target.title);
-    console.log(data);
-
-    dispatch({ type: actionTypes.ADD_PRODUCT, data: data, amount: 1 });
+  function navPopUp(){
+    setPopUpNav(!popUpNav)
   }
+ 
 
-  function deleteall(e) {
-    dispatch({ type: actionTypes.DELETE_ALL, data: e.target.id });
-  }
 
-  function decreamNum(e) {
-    let data = JSON.parse(e.target.title);
-    console.log(data);
-
-    dispatch({ type: actionTypes.REMOVE_PRODUCT, data: data, amount: 1 });
-  }
-
-  function activeNavPopUp() {
-    setNavPopUp(!navPopUp);
-  }
-
-  function activeNavPopUpCard() {
-    setNavPopUpCard(!navPopUpCard);
-  }
-  function disabledPopUp() {
-    setNavPopUp(false);
-  }
 
   return (
     <div className="navAllBar">
       <div className="allnav navbarFirstChild">
         <div className="flexrow allnavchild   ">
-          <div className="flexrow  center" onClick={disabledPopUp}>
+          <div className="flexrow  center" >
             <div className="logo">
               <h1>logo</h1>
             </div>
@@ -78,12 +52,12 @@ function Navbar(props) {
           <InputSearch />
 
           <div className="flexrow ">
-            {user.isLog ? (
+            {users.isLog ? (
               <div className="flexrow center">
                 <NavProfileBtn
-                  user={user}
-                  navPopUpCard={navPopUpCard}
-                  activeNavPopUpCard={activeNavPopUpCard}
+                  user={users}
+               popUpNav={popUpNav}
+               activePopUpNav={navPopUp}
                   logout={logout}
                 />
 
@@ -118,9 +92,9 @@ function Navbar(props) {
                   to="/cart"
                 >
                   cart{" "}
-                  {card.cardItems && card.cardItems.length > 0 ? (
+                  {cart.cardItems && cart.cardItems.length > 0 ? (
                     <div className="cartNumber flexcenter">
-                      <p className="cartNumberin">{card.cardItems.length}</p>
+                      <p className="cartNumberin">{cart.cardItems.length}</p>
                     </div>
                   ) : (
                     0
@@ -132,17 +106,7 @@ function Navbar(props) {
         </div>
       </div>
 
-      <Navphon
-        card={card}
-        activeNavPopUp={activeNavPopUp}
-        disabledPopUp={disabledPopUp}
-        deleteall={deleteall}
-        setAmount={setAmount}
-        decreamNum={decreamNum}
-        increamNum={increamNum}
-        isActive={navPopUp}
-        cart={card.cardItems}
-      />
+
     </div>
   );
 }

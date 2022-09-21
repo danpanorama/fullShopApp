@@ -14,15 +14,6 @@ function Order() {
     const [list, setlist] = useState([]);
 
 
-
-  
- 
-
-
-
-  
-
-
 useEffect(()=>{
     getAllProducts()
 },[])
@@ -43,7 +34,7 @@ useEffect(()=>{
          }else{
         
           setlist(res.data.data)
-             console.log(list)
+            
              setErrState("");
  
          }

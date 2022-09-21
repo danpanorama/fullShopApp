@@ -1,0 +1,57 @@
+.grid-4-4{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-gap: 10px;
+    justify-content: space-between;
+  }
+  .card{
+    border: 1px solid rgb(230, 227, 227);
+    border-radius: 3px;
+   
+    
+
+height: 85%;
+  }
+  .padding15{
+    
+  }
+.marginbottom30{
+    margin-bottom: 50px;
+}
+.image{
+height: 80%;
+width: 100%;
+}
+.img{
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    object-fit: cover;
+  }
+
+.updateButton{
+    width: 50%;
+ height: 100%;
+    background-color: rgba(65, 105, 225, 0.641);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    
+}
+.info_box{
+    
+}
+.buttons{
+    height: 15%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.deleteUpdate{
+    width: 50%;
+    border: none;
+    height: 100%;
+       background-color: rgba(255, 0, 0, 0.545); 
+}

@@ -23,6 +23,12 @@ margin: 0;
   justify-content: space-between;
   align-items: center;
 }
+.colorroyalblue{
+  background-color: royalblue;
+}
+.colorgreen{
+  background-color: yellowgreen;
+}
 .flexrowcenter{
   display: flex;
   flex-direction: row;
@@ -42,7 +48,9 @@ margin: 0;
   justify-content: space-between;
 }
 
-
+.fs10{
+  font-size: 10px;
+}
 .appall{
   padding-top: 60px;
 }
@@ -258,4 +266,19 @@ width: 100%;
 
 .borderbottom{
   border-bottom: 1px solid black;
+}
+
+.pagelink{
+  padding: 10px 20px;
+  border-radius: 3px;
+  background-color: rgb(194, 203, 229);
+  margin-right: 15px;
+  transition: all .3s;
+  cursor: pointer;
+}
+.pagelink:hover{
+  background-color: royalblue;
+}
+.padding{
+  margin-bottom: 20px;
 }

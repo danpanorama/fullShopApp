@@ -35,10 +35,10 @@ console.log(props)
             <div className="imagecurcule"></div>
             <div className="info">
                 <h3>payment info</h3>
-                <p>pay method: {props.pyment.ispaid  || ""}</p>
-                <p>deliverd: {props.pyment.isdeliverd ||""}</p>
-                <p>price: {props.pyment.price  ||""}</p>
-                <p  >is payed: {props.pyment.ispaid  || ""}</p>
+
+                <p  >date: {props.pyment.date  || ""}</p>
+                <p  >deliverd: {props.pyment.isdeliverd  || ""}</p>
+                <p className={props.pyment.ispaid == 'no' ?"colorroyalblue":"colorgreen"}> <strong  >is paid:  {props.pyment.ispaid  || ""}</strong> </p>
 
 
                 </div>

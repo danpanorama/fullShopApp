@@ -4,7 +4,7 @@ const loginstore = require('../controller/register/loginStore');
 const createNewStore = require('../controller/register/createStore');
 const orders = require('../controller/store/getorders')
 const users = require('../controller/store/getAllUsers')
-const login = require('../controller/register/login')
+const login = require('../controller/register/login');
 
 
 

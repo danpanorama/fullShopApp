@@ -10,17 +10,18 @@ const removeCommend = async (req, res, next) => {
     try {
         const date = await new Date();
         let getProduct = await products.getProductById(req.body.itemId);
+        console.log(getProduct[0][0],req.body.commentid)
+
         let json = JSON.parse(getProduct[0][0].commends);
-        console.log(json)
  
-        function fltired(e){
+        function fltired(e){ 
             
-            return e.date !=req.body.date && e.id != req.body.id 
+            return e.commentid !=req.body.commentid 
         }
 
        let arr =  json.filter(fltired)
 
-        console.log(arr)
+       
         let updateCommend = await products.updateCommend(arr,req.body.itemId)
         let returnMyProduct = await products.getProductById(req.body.itemId);
 

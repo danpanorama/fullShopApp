@@ -14,8 +14,8 @@ function Typepay(props) {
 <h1>how do you wanna pay</h1>
     </div>
     <div className="paylist">
-    <Link   to={{pathname:"/placeorder",state:"visa"}}  >     <p className="typepay">visa</p></Link>
-    <Link to={{pathname:"/placeorder",state:"paypal"}}   >  <p className="typepay">paypal</p></Link>
+       <p id='visa' onClick={props.paymethod} className="typepay">visa</p>
+    <p id='paypal' onClick={props.paymethod} className="typepay">paypal</p>
 
     </div>
   

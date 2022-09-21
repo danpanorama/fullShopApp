@@ -4,11 +4,12 @@ import axiosConfig from "../../config/AxiosConfig";
 import AddForm from "../../components/AddForm";
 import {useSelector,useDispatch} from "react-redux";
 import * as actionTypes from '../../store/Actions'
+import Prevewe from '../../components/Prevewe'
 
 function Profile() {
   const [errState, setErrState] = useState("");
   const dispatch = useDispatch()
-
+  const admin =  useSelector((state)=>state.admin);
   const addItem = useFormik({
     initialValues: {
       img: "",
@@ -16,7 +17,7 @@ function Profile() {
       cat: "",
       description: "",
       price: "",
-      storeId: 1,
+      storeId: admin.admin.id,
     },
     onSubmit: async (values) => {
       try {
@@ -25,9 +26,10 @@ function Profile() {
           dataForm.append("file", values.file, values.file.name);
         }
         let k = JSON.stringify(values);
+       dataForm.append('token',admin.token.toString())
         dataForm.append("user", k);
         await axiosConfig
-          .post("product/items/add", dataForm)
+          .post("product/items/add",dataForm)
           .then((res) => {
             if (res.data.err) {
               return setErrState(res.data.err);
@@ -47,8 +49,18 @@ function Profile() {
   });
 
   return (
-    <div className="containert  profile">
+    <div className="containert  profile ">
       <AddForm addItem={addItem} />
+   <div className="pad10   w100 ">
+   {addItem.values.file ? (
+              <Prevewe file={addItem.values.file} />
+            ) : (
+              ""
+            )}
+            <div className="words">
+
+            </div>
+   </div>
       {errState}
 
       {/* <AddNewItem addItem={addItem} /> */}

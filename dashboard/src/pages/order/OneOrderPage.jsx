@@ -8,6 +8,7 @@ import OrderList from '../../components/OrderList';
 import { useLocation } from "react-router-dom";
 import ProductList from '../../components/ProductList';
 import UserInfo from '../../components/UserInfo';
+import OrderPageList from '../../components/OrderPageList';
 
 
 function OneOrderPage(props) {
@@ -28,7 +29,7 @@ console.log(location.state.data);
 
 <h1 className="header">order  number {location.state.data.id}</h1>
 <UserInfo user={location.state.data}/>
-<ProductList e={location.state?JSON.parse(location.state.data.products):[]} />
+<OrderPageList e={location.state?JSON.parse(location.state.data.products):[]} />
   
  </div>
     </div>

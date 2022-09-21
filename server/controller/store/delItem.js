@@ -6,10 +6,10 @@ const products = require("../../models/sql/sqlpools");
 
 const delItem = async (req, res, next) => {
 try {
-  
-    if(req.body.isStore == true){
+console.log(req.body)
+    if(req.body.isStore == "yes"){
 
-        let del = await products.delproduct(req.body.id);
+        let del = await products.delproduct(req.body.productStoreId);
         // res.json({msg:'delete sucssece'})
         next()
 

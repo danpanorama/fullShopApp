@@ -5,7 +5,7 @@ import { NavLink, } from "react-router-dom";
 function NavProfileBtn(props) {
   return (
    <div className="alighn posre ">
-     <div onClick={props.activeNavPopUpCard} className="padlinkf">
+     <div onClick={props.activePopUpNav} className="padlinkf">
               <div
                   
                   className="Link"
@@ -17,7 +17,7 @@ function NavProfileBtn(props) {
 
               </div>
               
-              <div className={props.navPopUpCard?"linksActive flexcol " :"linksDisable"}>
+              <div className={props.popUpNav?"linksActive flexcol " :"linksDisable"}>
                 <NavLink activeclassname="active_Link" className=" cardlinkr  brbottom" to="/profile">
               profile
             </NavLink>

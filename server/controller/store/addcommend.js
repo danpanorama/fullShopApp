@@ -3,6 +3,8 @@ const authbcrypt = require("../../auth/bcrypt");
 const products = require("../../models/sql/sqlpools");
 const jwt = require("../../auth/jwt");
 const localStorage = require("localStorage");
+const crypto = require("crypto");
+
 
 // this is create use rfunction
 
@@ -13,13 +15,14 @@ const addcommend = async (req, res, next) => {
         let getProduct = await products.getProductById(req.body.itemId);
         console.log(getProduct[0][0]);
         let json = JSON.parse(getProduct[0][0].commends);
-        
+        const id = crypto.randomBytes(16).toString("hex");
 
         let obj = {
             name: req.body.name,
             id: req.body.id,
             text: req.body.text,
-            date:date
+            date:date,
+            commentid:id
         }
 
         json = [...json, obj]

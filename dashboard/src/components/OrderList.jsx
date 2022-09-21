@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 
 function OrderList(props){
-    console.log(props.lists)
+
     return(
         <div className="bc br pad10 w100 ">
             <table className="table  ">

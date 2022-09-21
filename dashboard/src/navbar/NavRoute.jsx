@@ -32,10 +32,18 @@ function NavRoute() {
 <Route path="/users" element={<Users/>} exact/>
 
 
-<Route path="/products" element={<ProductPage/>} exact/>
+
+
+<Route path="/updateproduct/:id" element={ <PrivateRoute />} exact> 
 <Route path="/updateproduct/:id" element={<UpdateProduct/>} exact/>
 
+</Route>
 
+
+<Route path="/products" element={ <PrivateRoute />} exact> 
+<Route path="/products" element={<ProductPage/>} exact/>
+
+</Route>
 
 
 
@@ -50,7 +58,6 @@ function NavRoute() {
 <Route path="/addproduct" element={ <PrivateRoute />} exact> 
 <Route path="/addproduct" element={<AddProduct/>} exact/>
 </Route>
-
 
 
 

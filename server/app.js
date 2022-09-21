@@ -8,7 +8,9 @@ const cors = require('cors')
 const indexRouter = require('./routes/index');
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/product');
-const storeRouter = require('./routes/store')
+const storeRouter = require('./routes/store');
+const adminRouter = require('./routes/admin')
+
 
 const registerRouter = require('./routes/register');
 

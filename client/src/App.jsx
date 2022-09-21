@@ -5,24 +5,25 @@ import NavRoute from './navbar/NavRoute';
 import { useEffect } from 'react';
 import {useDispatch,useSelector} from "react-redux";
 import * as actionTypes from "./store/Actions";
+import { stillConnected } from './Redux/Actions/userAction';
 
 
 function App() {
   const err = useSelector((state) => state.err);
-
+ 
   const dispatch = useDispatch();
 
   useEffect(()=>{
-    dispatch({type:actionTypes.STILL})  
+    dispatch(stillConnected())  
     dispatch({type:actionTypes.SET})  
 
 
   },[])
   return (
     <div className="App">
-      <div className={err.isActive?"consoleMessage":"disableConsole"}>
+      <div className={err.active_message?"consoleMessage":"disableConsole"}>
         <div className={err.type == 'good' ? "goodmsg":'badmessage'}>
-          <p>{err.text}</p>
+          <p>{err.msg}</p>
         </div>
 
       </div>

@@ -42,9 +42,9 @@ useEffect(()=>{
          return setErrState(res.data.err);
  
          }else{
-        
+        res.data[0]
           setlist(res.data.data)
-             console.log(list)
+           
              setErrState("");
  
          }

@@ -5,22 +5,27 @@ import axiosConfig from "../../config/AxiosConfig";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import ItemCard from "../../components/ItemCard";
+import { cleareUpdateStae, getStoreProductsAction } from "../../Redux/Actions/productsAction";
+import ProductList from "../../components/ProductList";
 
 function ProductPage() {
   const [errState, setErrState] = useState("");
   const dispatch = useDispatch();
-  const user = useSelector((state) => state.user);
+  const admin = useSelector((state) => state.admin);
+  const products = useSelector((state) => state.products);
 
-  const store = useSelector((state) => state.item);
+
 
   async function deleteItem(e) {
     try {
+      console.log(e)
       await axiosConfig
         .post("/product/items/del", {
-          id: e.target.id,
-          path: e.target.getAttribute("dan"),
-          isStore: true,
-          productStoreId: e.target.title,
+          id: admin.admin.id,
+          path: e.img,
+          isStore: admin.admin.isStore, 
+          productStoreId: e.id,
+          token:admin.token
         })
         .then((res) => {
           if (res.data.err) {
@@ -41,25 +46,12 @@ function ProductPage() {
 
   useEffect(() => {
     getAllMyProducts();
+   
   }, []);
-
+ 
   async function getAllMyProducts() {
     try {
-      await axiosConfig
-        .get("/product/items/getall")
-        .then((res) => {
-          if (res.data.err) {
-            return setErrState(res.data.err);
-          } else {
-            console.log(res.data);
-
-            dispatch({ type: actionTypes.SET_STORE_PRODUCTS, data: res.data });
-            setErrState("");
-          }
-        })
-        .catch((err) => {
-          setErrState(err.err);
-        });
+      dispatch(getStoreProductsAction())
     } catch (e) {
       console.log(e);
       setErrState("error while sending requast" + e);
@@ -69,8 +61,13 @@ function ProductPage() {
   return (
     <div className="  ">
       <div className="">
-        {store.item
-          ? store.item.map((e) => {
+
+
+       
+       <ProductList e={products.items} deleteItem={deleteItem} />
+       
+        {/* {products.items
+          ? products.items.map((e) => {
               let imgg = e.img.split("upload");
 
               return (
@@ -91,7 +88,7 @@ function ProductPage() {
                 </div>
               );
             })
-          : "no items"}
+          : "no items"} */}
       </div>
     </div>
   );

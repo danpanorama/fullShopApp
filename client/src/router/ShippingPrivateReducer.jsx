@@ -4,8 +4,8 @@ import {useSelector} from "react-redux";
 
 const ShippingPrivateReducer = () => {
     
-const isLog =  useSelector((state)=>state.user.isLog);
-const item =  useSelector((state)=>state.item);
+const isLog =  useSelector((state)=>state.users.isLog);
+const cart =  useSelector((state)=>state.cart);
 
     const auth = null; // determine if authorized, from context or however you're doing it
 

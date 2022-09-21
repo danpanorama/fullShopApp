@@ -5,8 +5,8 @@ const localStorage = require("localStorage");
 const makeToken = (data) => {
  let on = localStorage.getItem('isRemember');
  let tims;
-
- if(on = true){
+console.log('jwt')
+ if(on ){
 tims = '30d'
  }else{
    tims = '5s'

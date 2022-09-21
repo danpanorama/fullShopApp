@@ -1,25 +1,24 @@
 import { Routes, NavLink, Route, Router } from "react-router-dom";
 import Navbar from "./Navbar";
 import '../css/App.css';
-import Home from "../pages/home/Home";
-import CreateUser from "../pages/login/register/CreateUser";
-import Login from "../pages/login/Login";
-import CreateStore from "../pages/login/register/store/CreateStore";
+import Home from "../pages/Home";
+import CreateUser from "../pages/CreateUser";
+import Login from "../pages/Login";
 import PrivateRoute from "../router/PrivateRout";
-import Profile from "../pages/profile/Profile";
+import Profile from "../pages/Profile";
 import StorePrivateRouter from "../router/StorePrivateRouter";
-import StoreProfile from '../pages/profile/storeprofile/StoreProfile'
-import Store from "../pages/store/Store";
-import UpdateProduct from "../pages/profile/storeprofile/functional/UpdateProduct";
-import ProductPage from "../pages/store/ProductPage";
- import Cart from "../pages/cart/Cart";
- import Shipping from "../pages/cart/shipping/Shipping";
-
+import Store from "../pages/Store";
+import ProductPage from "../pages/ProductPage";
+ import Cart from "../pages/Cart";
+ import Shipping from "../pages/Shipping";
  import ShippingPrivateReducer from "../router/ShippingPrivateReducer";
-import Paypage from "../pages/paypage/Paypage";
+import Paypage from "../pages/Paypage";
 import PrivateOrederList from "../router/PrivateOrederList";
-import PlaceOrder from "../pages/placeorder/PlaceOrder";
-import Order from "../pages/orderscreen/Order";
+import PlaceOrder from "../pages/PlaceOrder";
+import Order from "../pages/Order";
+
+
+
 // commit
 function NavRoute() {
   return (
@@ -31,9 +30,10 @@ function NavRoute() {
 <Route path="/*" element={<Home/>} exact/>
 <Route path="/createuser" element={<CreateUser/>} exact/>
 <Route path="/login" element={<Login/>} exact/>
-
-<Route path="/createstore" element={<CreateStore/>} exact/>
-
+<Route path="/store" element={<Store/>} exact/>
+<Route path="/product/:id" element={<ProductPage/>} exact/>
+<Route path="/cart" element={<Cart/>} exact/>
+<Route path="/paypage" element={<Paypage/>} exact/>
 
 <Route path="/profile" element={ <PrivateRoute />} exact> 
 <Route path="/profile" element={<Profile/>} exact/>
@@ -43,25 +43,18 @@ function NavRoute() {
 <Route path="/placeorder" element={<PlaceOrder/>} exact/>
 </Route>
 
-<Route path="/paypage" element={<Paypage/>} exact/>
-
-
 <Route path="/shipping" element={ <ShippingPrivateReducer />} exact> 
 <Route path="/shipping" element={<Shipping/>} exact/>
 </Route>
-<Route path="//order/:id" element={ <PrivateRoute />} exact> 
 
+<Route path="//order/:id" element={ <PrivateRoute />} exact> 
 <Route path="/order/:id" element={ <Order />} exact/> 
 </Route>
 
-<Route path="/storeprofile" element={ <StorePrivateRouter />} exact> 
-<Route path="/storeprofile" element={<StoreProfile/>} exact/>
-</Route>
 
-<Route path="/store" element={<Store/>} exact/>
-<Route path="/update/:id" element={<UpdateProduct/>} exact/>
-<Route path="/product/:id" element={<ProductPage/>} exact/>
-<Route path="/cart" element={<Cart/>} exact/>
+
+
+
 
 
 

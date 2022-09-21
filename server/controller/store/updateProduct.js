@@ -9,17 +9,18 @@ const localStorage = require("localStorage");
 const updateProducts = async (req, res, next) => {
   try {
     const date = await new Date();
-    console.log(req.body)
+    
+    req.body = JSON.parse(req.body.admin)
 
 
 
     let CheckingStoreName = await products.getUserById(req.body.storeId);
 
     if (CheckingStoreName[0].length > 0 && CheckingStoreName[0][0].isStore == 'yes') {
+     let updateItem 
      
-
-
-      let updateItem = await products.updateProduct(
+      if(req.file){
+        updateItem   = await products.updateProduct(
         req.body.name,
         req.body.description,
         req.body.cat,
@@ -27,19 +28,32 @@ const updateProducts = async (req, res, next) => {
         req.body.price,
         req.body.commends,
         req.body.likes,
-        req.body.img, 
+        req.file.path, 
         req.body.id,
         
       );
+      }else{
+        updateItem   = await products.updateProductWithoutImage(
+          req.body.name,
+          req.body.description,
+          req.body.cat,
+          req.body.storeId,
+          req.body.price,
+          req.body.commends,
+          req.body.likes,
+          req.body.id,
+          
+        );
+      }
+
+    
 
       if (updateItem) {
         
         let items = await products.getProductById(req.body.id);
-        console.log(items[0][0])
-       
-        res.json({
-          data: items[0][0]
-        });
+        
+       req.items = items[0][0]
+       next()
       }
     } else {
       res.json({

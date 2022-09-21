@@ -4,13 +4,13 @@ import {useSelector} from "react-redux";
 
 const PrivateRoute = () => {
     
-const isLog =  useSelector((state)=>state.admin.isLog);
+const admin =  useSelector((state)=>state.admin);
 
     const auth = null; // determine if authorized, from context or however you're doing it
 
     // If authorized, return an outlet that will render child elements
     // If not, return element that will navigate to login page
-    return isLog ? <Outlet /> : <Navigate to="/login" />;
+    return admin.isLog ? <Outlet /> : <Navigate to="/login" />;
 }
 
 

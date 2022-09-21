@@ -10,9 +10,9 @@ const addNewItem = async (req, res, next) => {
   try {
 
     const date = await new Date();
-   
+    console.log(req.body);
+
     req.body = JSON.parse(req.body.user);
- console.log(req.body)
 
       let commends = '[]'
       let likes = "[]"

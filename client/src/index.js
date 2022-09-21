@@ -7,11 +7,8 @@ import reportWebVitals from './reportWebVitals';
 import {BrowserRouter} from "react-router-dom";
 
 
-import { Provider } from "react-redux";
-import rootConfigReducer from "./store/combineReducers/configReducers"
-import { createStore} from "redux";
-
-const store = createStore(rootConfigReducer);
+import store from './Redux/store';
+import {Provider} from 'react-redux';
 
 
 

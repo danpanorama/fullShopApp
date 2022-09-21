@@ -7,15 +7,26 @@ import * as actionTypes from "../../store/Actions";
 import axiosConfig from "../../config/AxiosConfig"
 import { useEffect } from 'react';
 import {useLocation} from 'react-router-dom'
+import UpdateForm from '../../components/UpdateForm';
+import { setProductToUpdate, updateProduct ,cleareUpdateStae} from '../../Redux/Actions/productsAction';
 
 function UpdateProduct(props) {
     const [errState, setErrState] = useState("");
     const dispatch = useDispatch();
     let location = useLocation();
+    const updateProductState = useSelector((state)=> state.updateState)
+
+    const admin = useSelector((state)=> state.admin)
 
 
+useEffect(()=>{
+  console.log(location.state.data,"::::useeffect")
+  
+  dispatch(setProductToUpdate(location.state.data))
+
+},[location.state])
     
-  const addItem = useFormik({
+  const updateItem = useFormik({
     initialValues:{
         id:location.state.data.id,
       img:location.state.data.img,
@@ -25,31 +36,22 @@ function UpdateProduct(props) {
       commends:location.state.data.commends,
       likes:location.state.data.likes,
       price: location.state.data.price,
-      storeId: 1,
+      storeId: admin.admin.id,
+      path1:location.state.data.img 
     
   },onSubmit:async values  => { 
-    try{
+    try{ 
 
-       await
-      axiosConfig
-      .post("product/items/update", 
-      values
-      )
-      .then((res) => {
-        if(res.data.err){
-        return setErrState(res.data.err);
+      let dataForm = new FormData();
+      if (values.file) {
+        dataForm.append("file", values.file, values.file.name);
+      }
+      let k = JSON.stringify(values);
+     dataForm.append('token',admin.token.toString())
+      dataForm.append("admin", k);
 
-        }else{
-       console.log(res.data)
-        
-            dispatch({type:actionTypes.ADD_ITEM,data:res.data})
-            setErrState("");
+      dispatch(updateProduct(dataForm));
 
-        }
-      })
-      .catch((err) => {
-        setErrState(err.err);
-      });
     }catch(e){
       console.log(e)
       setErrState("error while sending requast"+e);
@@ -65,7 +67,7 @@ async function updateImage(){
 
   try{
     let dataForm2 = new FormData();
-    dataForm2.append('file',addItem.values.file,addItem.values.file.name);
+    dataForm2.append('file',updateItem.values.file,updateItem.values.file.name);
     dataForm2.append('oldurl',location.state.data.img);
     await
    axiosConfig
@@ -97,18 +99,13 @@ async function updateImage(){
 
 
 
-
   return (
     <div className="flexcenter containert w100">
         <h1>update</h1>
-        {location.state.data.name}
-{/* 
-        <UpdateItem  updateImage={updateImage} addItem={addItem}/>
-        <div className="currentProduct">
-          {location.state.data.name}
-          
-        </div> */}
-   
+        <p>{updateProductState.updateItem.name}</p>
+        <p>{updateProductState.updateItem.price}$</p>
+
+   <UpdateForm updateItem={updateItem}/>
     </div>
   );
 }

@@ -137,6 +137,19 @@ const updateProduct = (name, description, cat, storeId, price, commends, likes, 
     [name, description, cat, storeId, price, commends, likes, img, id]
   );
 };
+const updateProductWithoutImage = (name, description, cat, storeId, price, commends, likes, id) => {
+  return pool.execute(
+    `UPDATE products 
+    SET name = ?,description = ?,
+    cat = ?, storeId =? ,
+    price = ? ,
+    commends = ?,
+     likes = ?
+     
+    WHERE id = ? `,
+    [name, description, cat, storeId, price, commends, likes , id]
+  );
+};
 
 
 const updateCommend = (commends, id) => {
@@ -223,6 +236,7 @@ module.exports.getMyOrderByOrderId = getMyOrderByOrderId;
 
 
 module.exports.getMyOrder = getMyOrder;
+module.exports.updateProductWithoutImage = updateProductWithoutImage;
 
 
 

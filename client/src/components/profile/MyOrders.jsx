@@ -4,7 +4,6 @@ import { Link } from "react-router-dom";
 function MyOrders(props) {
   const [preview, setpreview] = useState(null);
 
-  console.log(props.list);
   return (
     <div className="">
       <div className="">
