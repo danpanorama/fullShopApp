@@ -5,7 +5,8 @@ const initialState = {
   cardItems: [],
   shipping: {},
   payment:{},
-  total:0
+  total:0,
+  AllOrdersItems:[]
 };
 
 const reducer = (state = initialState, action) => {
@@ -22,14 +23,20 @@ const reducer = (state = initialState, action) => {
         let yourDate = new Date()
         let date = yourDate.toISOString().split('T')[0];
 
-        
-
         payState.payment = {
           "date":date,
           "type":action.data,
         'ispaid':"no"}
   
         return payState;
+
+        case actionTypes.SET_ORDER_READY:
+        const orderready = {
+          ...state,
+        };
+       orderready.AllOrdersItems = action.data
+  
+        return orderready;
  
         case actionTypes.SET_SINGLE_ITEM:
             const single = {

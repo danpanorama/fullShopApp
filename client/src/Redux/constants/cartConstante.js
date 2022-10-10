@@ -10,3 +10,6 @@ export const ADD_PAYMENT = "ADD_PAYMENT";
 
 
 export const SET_SINGLE_ITEM = "SET_SINGLE_ITEM";
+
+export const SET_ORDER_READY = "SET_ORDER_READY";
+

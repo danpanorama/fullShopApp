@@ -1,0 +1,26 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+    {
+      "type": "msedge",
+      "request": "launch",
+      "name": "Launch Edge against localhost",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}/client/src/App.js"
+    },
+    {
+      "name": "Attach to Chrome",
+      "request": "attach",
+      "type": "node",
+      "webRoot": "${workspaceFolder}/server/app.js",
+      "processId":"${command:PickProcess}"
+    },
+      {
+        "type": "node",
+        "request": "launch",
+        "name": "Launch Program",
+        "skipFiles": ["<node_internals>/**"],
+        "program": "${workspaceFolder}/server\\app.js"
+      }
+    ]
+  }

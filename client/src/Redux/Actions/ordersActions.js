@@ -1,4 +1,4 @@
-import {SET_SINGLE_ITEM} from '../constants/cartConstante'
+import {SET_SINGLE_ITEM,SET_ORDER_READY} from '../constants/cartConstante'
 import {ERROR,PRODUCT_FAIL} from '../constants/errConstant'
 import {SET_PRODUCTS} from '../constants/productsConstant'
 import axiosConfig from "../../config/AxiosConfig";
@@ -16,23 +16,25 @@ export const getOrderById = (data) => async (dispatch)=>{
        {params: {id:data}}
         )
         .then((res) => {
+
           if(res.data.err){
             dispatch({type:ERROR,data:"somthing wrong"})
       
           }else{
-           if(res.data.data[0].products){
-            let products = JSON.parse(res.data.data[0].products);
-            let shipping = JSON.parse(res.data.data[0].shipping);
-            let obj={
-              ispaid:res.data.data[0].ispaid,
-              isdeliverd:res.data.data[0].isdeliverd,
-              price:res.data.data[0].price
-            }
-            res.data.data[0].products = products;
-            res.data.data[0].shipping = shipping;
+           if(res.data.data){
+       
+            // let products = JSON.parse(res.data.data[0].products);
+            // let shipping = JSON.parse(res.data.data[0].shipping);
+            // let obj={
+            //   ispaid:res.data.data[0].ispaid,
+            //   isdeliverd:res.data.data[0].isdeliverd,
+            //   price:res.data.data[0].price
+            // }
+            // res.data.data[0].products = products;
+            // res.data.data[0].shipping = shipping;
           
 
-            dispatch({type:SET_SINGLE_ITEM,data:res.data.data[0]})
+            dispatch({type:SET_ORDER_READY,data:res.data.data})
 
             
            }

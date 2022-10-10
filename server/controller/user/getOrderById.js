@@ -1,22 +1,22 @@
 
-const orders = require("../../models/sql/sqlpools");
+const orders = require("../../models/sql/sqlBuy");
 
 
-// this is create use rfunction
+// get spetsiphick order
 
 const getOrderById = async (req, res, next) => {
 try {
   
-console.log(req.query,":::::")
+console.log(req.query,":::111::")
 
 
 
 
  
 
-  let getAllMyOrders = await orders.selectOrderByPId(req.query.id);
+  let getAllMyOrders = await orders.selectProductsOrderJoinById(req.query.id);
   
-    console.log(getAllMyOrders[0])
+  
     res.json({data:getAllMyOrders[0]});
 
   

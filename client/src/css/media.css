@@ -3,6 +3,13 @@
 .marginPage{
     width: 90% !important;
 }
+.inputsearch{
+    width: 200px !important;
+}
+.allnavchild{
+    width: 100% !important
+    ;
+}
 }
 
 @media screen and (max-width: 800px) {

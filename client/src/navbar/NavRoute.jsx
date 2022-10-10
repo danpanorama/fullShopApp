@@ -16,7 +16,7 @@ import Paypage from "../pages/Paypage";
 import PrivateOrederList from "../router/PrivateOrederList";
 import PlaceOrder from "../pages/PlaceOrder";
 import Order from "../pages/Order";
-
+import OrderFix from "../pages/OrderFixed";
 
 
 // commit
@@ -48,7 +48,7 @@ function NavRoute() {
 </Route>
 
 <Route path="//order/:id" element={ <PrivateRoute />} exact> 
-<Route path="/order/:id" element={ <Order />} exact/> 
+<Route path="/order/:id" element={ <OrderFix />} exact/> 
 </Route>
 
 

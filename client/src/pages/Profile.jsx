@@ -10,13 +10,15 @@ import * as actionTypes from "../store/Actions";
 import axiosConfig from "../config/AxiosConfig"
 import MyOrders from '../components/profile/MyOrders';
 
-
+import Pagination from '../components/pagenation/Pagination';
 function Profile() {
     const [errState, setErrState] = useState("");
     const dispatch = useDispatch();
     const user =  useSelector((state)=>state.users);
     const [activete, setAcctivate] = useState("profile");
     const [list, setlist] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [arrayPerPage, setArrayPerPage] = useState(5);
 
 
 
@@ -98,7 +100,11 @@ getAllMyProducts()
     }
 
 
-
+    const indexOfLastProduct = currentPage * arrayPerPage;
+    const indexOfFirstProduct = indexOfLastProduct - arrayPerPage;
+    const currentArray = list.slice(indexOfFirstProduct,indexOfLastProduct)
+    const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
 
 
   return (
@@ -110,7 +116,10 @@ getAllMyProducts()
   {activete == 'profile'?
      <Profilecomp updateUser={updateUser}  />
      :
-     <MyOrders list={list} updateUser={updateUser}  />
+    <div className="">
+       <MyOrders list={currentArray} updateUser={updateUser}  />
+       <Pagination paginate={paginate} arrayPerPage={arrayPerPage} totalProducts={list.length} />
+    </div>
 
 
 }

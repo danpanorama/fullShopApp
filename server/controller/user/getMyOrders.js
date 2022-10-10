@@ -1,8 +1,8 @@
 
-const orders = require("../../models/sql/sqlpools");
+const orders = require("../../models/sql/sqlBuy");
 
 
-// this is create use rfunction
+// get orders by client id 
 
 const getMyOrders = async (req, res, next) => {
 try {
@@ -12,14 +12,15 @@ console.log(req.query,":::::")
 
 
 
- 
-
-  let getAllMyOrders = await orders.selectOrderById(req.query.id);
   
-    console.log(getAllMyOrders[0])
+
+  let getAllMyOrders = await orders.selectOrderByClientId(req.query.id);
+  
+    
     res.json({data:getAllMyOrders[0]});
 
   
+ 
 
 
 

@@ -23,13 +23,13 @@ console.log(item)
 
 async function buyItem(){
   let cardItems = item.cardItems;
-  let jsoncarditems = JSON.stringify(cardItems);
+ 
 
   let shipping = item.shipping;
   await
   axiosConfig 
   .post("/users/neworder", 
-{  item:jsoncarditems,shipping:shipping,user:user}
+{  item:cardItems,shipping:shipping,user:user}
   )
   .then((res) => {
     if(res.data.err){

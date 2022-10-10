@@ -9,7 +9,7 @@ function Pagination(props) {
    
     for(let i = 1 ; i <= Math.ceil(props.totalProducts / props.arrayPerPage); i++){
         pagenum.push(i)
-        console.log(i)
+       
     }
  
 

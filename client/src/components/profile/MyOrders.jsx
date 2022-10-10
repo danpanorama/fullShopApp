@@ -8,10 +8,12 @@ function MyOrders(props) {
     <div className="">
       <div className="">
         <table className="table  ">
-          <tr>
+          <tr> 
             <th>id</th>
             <th>is payed</th>
             <th>price</th>
+            <th>is deliverd</th>
+            <th>date </th>
           </tr>
           {props.list.length > 0
             ? props.list.map((e) => {
@@ -32,6 +34,8 @@ function MyOrders(props) {
 
                       <td> {e.ispaid}</td>
                       <td> {e.price}</td>
+                      <td>{e.isdeliverd}</td>
+                      <td>{e.date.split('T')}</td>
                     </tr>
                   </tbody>
                 );
