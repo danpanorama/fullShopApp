@@ -14,8 +14,8 @@ function ProductPagecomp(props) {
 
         <div className="h50vh flexcenter width100 ">
           <div className="flexrow allpagedivd h100 ">
-            <div className="sideA">
-              <div className="imageproduct">
+            <div className="sideA flexcenter">
+              <div className="imageproduct  ">
                 <img src={'http://localhost:3030/product/file'+immg[1]} alt="" className="img" />
               </div>
             </div>

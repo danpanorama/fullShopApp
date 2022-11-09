@@ -5,9 +5,9 @@ import '../../css/login.css';
 
 function Loginform(props) {
   return (
-    <div className="Login">
+    <div className="Login ">
 
-<div className="loginbox">
+<div className="loginbox ">
 <form
           action=""
           className="form flexcol"

@@ -111,7 +111,7 @@ function Login() {
 
   return (
     <div className="  ">
-<div className=" ">
+<div className="flexcol center ">
 
 <p className="">- login and explore -</p>
 <Loginform login={login}/>

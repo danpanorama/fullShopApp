@@ -282,3 +282,8 @@ width: 100%;
 .padding{
   margin-bottom: 20px;
 }
+
+.paddpage{
+  width: 70%;
+  margin: 0 auto;
+}
