@@ -52,11 +52,13 @@ let array_p = []
               )
           }
 
-console.log(array_p)
+let at = [array_p]
+let ct = []
+ct.push(at);
 
 
 
-          await neworder.insertNewProductOrders( array_p );
+          await neworder.insertNewProductOrders( ct );
 
     
 // res.json({id:inseretNewOrder[0].insertId})

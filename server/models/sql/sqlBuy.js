@@ -39,14 +39,20 @@ const insertNewOrders = (clientid, adress, price, ispaid, datepaid, isdeliverd, 
         clientemail,clientname, state, country, phon, zipcode]
   );
 };
-const insertNewProductOrders = ([[values]]) => {
+// const insertNewProductOrders = (values) => {
+//   return pool.execute(
+//     `INSERT INTO storeapp.orderproducts 
+//     (orderid,name,amount,productid,productprice,
+//       productname,productimage,productdesc,productcat,
+//       totalprice) 
+//     VALUES  ? `,
+//     [values] 
+//   );
+// };
+
+const insertNewProductOrders = (values) => {
   return pool.execute(
-    `INSERT INTO storeapp.orderproducts 
-    (orderid,name,amount,productid,productprice,
-      productname,productimage,productdesc,productcat,
-      totalprice) 
-    VALUES 
-    ?`,
+    `INSERT INTO storeapp.orderproducts (orderid,name,amount,productid,productprice,productname,productimage,productdesc,productcat,totalprice) VALUES ? `,
     [values]
   );
 };
