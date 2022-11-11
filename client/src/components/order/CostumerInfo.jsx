@@ -3,7 +3,7 @@
 function CostumerInfo(props) {
 
 console.log(props)
-
+ 
   return (
   
 
@@ -23,10 +23,10 @@ console.log(props)
             
             <div className="imagecurcule"></div>
             <div className="info"><h3>shipping to</h3>
-            <p>state: {props.item.shipping.state || ""}</p>
-                <p>address: {props.item.shipping.address || ""}</p>
-                <p>phone: {props.item.shipping.phone|| ""}</p>
-                <p>zip code: {props.item.shipping.zipcode || ""}</p>
+            <p>state: {props.order.shipping.state || ""}</p>
+                <p>address: {props.order.shipping.address || ""}</p>
+                <p>phone: {props.order.shipping.phone|| ""}</p>
+                <p>zip code: {props.order.shipping.zipcode || ""}</p>
 
             </div>
         </div>

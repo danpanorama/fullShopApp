@@ -28,7 +28,7 @@ function ProductPagecomp(props) {
                 </div>
                 <div className="revuseandprice flexrow">
               <div className="revusediv flexrow marginbottom40">
-             <p className="rev"> revuse 
+             <div className="rev"> revuse 
              {props.product.likes?JSON.parse(props.product.likes).map((e)=>{  
               let total = 0;
               total = total +  parseInt(e.rating)
@@ -38,7 +38,7 @@ function ProductPagecomp(props) {
                 </div>
                )
                 }):""} 
-                </p>
+                </div>
   {props.islog?
  <select name="" onChange={props.likeProduct} id={props.product.id}>
  <option value="1">1</option>
@@ -57,7 +57,7 @@ function ProductPagecomp(props) {
                 
                  
                <div className="addfirstChild">
-               <p className="pricestorepage paddforstprepage bbotoom flexrow between "> <p>price:</p> {props.product.price * props.amountState}$</p>
+               <div className="pricestorepage paddforstprepage bbotoom flexrow between "> <p>price:</p> {props.product.price * props.amountState}$</div>
                <div className="flexrow between paddforstprepage bbotoom">
                <p>revuse</p>
                 </div>

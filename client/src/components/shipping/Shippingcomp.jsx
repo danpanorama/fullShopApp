@@ -66,6 +66,8 @@ function Shippingcomp(props) {
           value={props.shipping.values.phon}
           onChange={props.shipping.handleChange}
           name="phon"
+          
+
           className="inputuser inputshipping"
           placeholder="phon"
         />

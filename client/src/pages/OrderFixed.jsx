@@ -14,20 +14,13 @@ import {getOrderById, payOrderAction} from '../Redux/Actions/ordersActions'
 
 function OrderFix(props) {
 const user =  useSelector((state)=>state.users);
-const item =  useSelector((state)=>state.cart);
 const order =  useSelector((state)=>state.orders);
 
-const [list,setList ] = useState([])
-const [total,settotal ] = useState(0)
-const [payment,setpaymeny ] = useState({})
+
 
 const dispatch = useDispatch();
 let location = useLocation();
 
-async function buyItem(){
-
- 
-}
 useEffect(()=>{
 getOrder()
 },[])
@@ -35,8 +28,8 @@ getOrder()
 async function getOrder(){
     try{
 
-    let r =  dispatch(getOrderById(location.state.data))
-console.log(r)
+    dispatch(getOrderById(location.state.data))
+
 
     }catch(e){
 
@@ -47,7 +40,7 @@ console.log(r)
 
 
 async function payOrder(e){
-  console.log(location.state.data)
+  
   try{
 
      dispatch(payOrderAction(location.state.data));
@@ -56,23 +49,27 @@ async function payOrder(e){
   }catch(e){
 
   }
-}
+} 
 
   return ( 
     <div className="   ">
-       <CostumerInfoFix all={order} pyment={order.payment} user={user} item={order} />
+       <CostumerInfoFix all={order.AllOrdersItems}  user={user} item={order} />
 
  <h1>order</h1>
  <div className="flexrow flextop">
   <CartListFix all={order} />
 
-  {order.payment.ispaid == 'no'?
-    <PayboxFix all={order}  class={"buybtn3 flexcenter "} btntext={'pay now'} buyItem={payOrder} />
+{order.AllOrdersItems.length > 0? 
+<div className="w100">
+{ order.AllOrdersItems[0].ispaid  == 'no'?
+  <PayboxFix all={order} totalPrice={order.AllOrdersItems.length > 0 ?order.AllOrdersItems[0].totalprice:0}  class={"buybtn3 flexcenter "} btntext={'pay now'} buyItem={payOrder} />
 
-  :
-  <PayboxFix all={order}   btntext={'product paid success'} />
+:
+<PayboxFix all={order} totalPrice={order.AllOrdersItems.length > 0 ?order.AllOrdersItems[0].totalprice:0}    btntext={'product paid success'} />
 
-  }
+}
+</div>
+  : ""}
   
  </div>
  

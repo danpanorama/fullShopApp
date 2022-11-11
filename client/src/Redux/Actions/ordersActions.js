@@ -33,6 +33,7 @@ export const getOrderById = (data) => async (dispatch)=>{
             // res.data.data[0].products = products;
             // res.data.data[0].shipping = shipping;
           
+            
 
             dispatch({type:SET_ORDER_READY,data:res.data.data})
 
@@ -68,16 +69,13 @@ export const payOrderAction = (data) => async (dispatch) => {
           dispatch({type:ERROR,data:"somthing wrong"})
     
         }else{
-         console.log(res.data)
+         
          if(res.data){
-          res.data.data.products = JSON.parse(res.data.data.products);
-          res.data.data.shipping = JSON.parse(res.data.data.shipping);
-
-         console.log(res.data.data);
-
+       
+          dispatch({type:SET_ORDER_READY,data:res.data.data})
          }
 
-         dispatch({type:SET_SINGLE_ITEM,data:res.data.data})
+        //  dispatch({type:SET_SINGLE_ITEM,data:res.data.data})
 
        
           // setList(re);

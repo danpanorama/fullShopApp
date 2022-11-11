@@ -73,7 +73,7 @@ function CartComp(props) {
   <NavLink to="/store"  className={ "sopping"}>continue to shopping </NavLink>
 
     {/* <button onClick={props.buyproduct}  className={props.cart&&props.cart.length > 0 ? "buybtn":"butbuttondivdisabled"}>buy {total}$ </button> */}
- <NavLink to="/shipping" state={total}  className={props.cart&&props.cart.length > 0 ? "buybtn":"butbuttondivdisabled"}>buy {total}$</NavLink>
+ <div id={total} onClick={props.buyproduct}  className={props.cart&&props.cart.length > 0 ? "buybtn":"butbuttondivdisabled"}>buy {total}$</div>
   
   </div>
     </div>   

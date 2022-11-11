@@ -17,7 +17,6 @@ function ProductPage(props) {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.users);
   const product = useSelector((state) => state.products);
-
   const [errState, setErrState] = useState("");
   const [productState, SetProducte] = useState({});
   let location = useLocation();
@@ -27,18 +26,14 @@ function ProductPage(props) {
     dispatch(messageAction({type:'good',msg:"plus one always fun"}))
 
   }
- 
   function decreamNum() {
     if (amountState > 1) {
       setAmount(amountState - 1);
       dispatch(messageAction({type:'good',msg:"minus one pretty sucks for a guy like you"}))
-
     }
   }
 
   useEffect(() => {
-    // SetProducte(location.state.data);
-   
     dispatch(singleProductPage(location.state.data));
   }, [dispatch,location.state.data]);
 
@@ -70,16 +65,9 @@ function ProductPage(props) {
 
   async function removecommend(e) {
     try {
-      let data = JSON.parse(e.target.title);
-      data.itemId = location.state.data.id;
-      // let json = JSON.parse(productState.commends);
-      // function filter(e) {
-      //   return e.id != data.id && e.text != data.text;
-      // }
-
-      // let arr = json.filter(filter);
-      // let string = JSON.stringify(arr);
-      // productState.commends = string;
+      // let data = JSON.parse(e.target.title);
+      // data.itemId = location.state.data.id;
+ let data = e.target.id
       dispatch(removeComment(data));
       dispatch(messageAction({type:'good',msg:"you remove a comment"}))
 
@@ -99,6 +87,7 @@ function ProductPage(props) {
         values.name = user.user.name;
         values.id = user.user.id;
         values.itemId = location.state.data.id;
+        values.rating = 4
         dispatch(addComment(values));
         dispatch(messageAction({type:'good',msg:"you add a comment"}))
 
@@ -134,6 +123,7 @@ function ProductPage(props) {
         id={user.user.id}
         addCommend={addCommend}
         product={product.singleItem}
+        comments = {product.comments}
       />
     </div>
   );

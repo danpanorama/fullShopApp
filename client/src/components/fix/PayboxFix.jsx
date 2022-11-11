@@ -12,11 +12,11 @@ let countnum;
     <div className="table flexcor">
         <div className="flexrow between">
             <p className="title padding15">pay</p>
-            <p className="answare padding15">{props.all.total}</p>
+            <p className="answare padding15">{props.totalPrice}</p>
         </div>
         <div className="flexrow between">
             <p className="title padding15">shipping</p>
-            <p className="answare padding15 ">10$ + {countnum =(props.all.total + 10 )}</p>
+            <p className="answare padding15 ">10$ + {countnum =(props.totalPrice + 10 )}</p>
         </div>
         <div className="flexrow between borderbottom">
             <p className="title padding15">tax</p>
@@ -31,8 +31,8 @@ let countnum;
 
     </div>
  
-   <div onClick={props.all.buyItem} className={props.all.class}>
-           {props.all.btntext}
+   <div onClick={props.buyItem} className={props.class}>
+           {props.btntext}
         </div>
    
   

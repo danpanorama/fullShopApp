@@ -8,6 +8,7 @@ import CartComp from "../components/cart/CartComp";
 import Total from "../components/cart/Total";
 import { Navigate } from "react-router-dom";
 import { messageAction } from "../Redux/Actions/errAction";
+import { setTotal } from "../Redux/Actions/cartAction";
 
 function Cart(props) {
   const [errState, setErrState] = useState("");
@@ -16,6 +17,8 @@ function Cart(props) {
   const card = useSelector((state) => state.cart);
   const [navPopUp, setNavPopUp] = useState(false);
   const [neddToLogState, setNeedToLog] = useState(false);
+  const [GoOnState, setGoOn] = useState(false);
+
   const [amountState, setAmount] = useState(1);
 
   function increamNum(e) {
@@ -39,12 +42,20 @@ function Cart(props) {
 
   }
 
-  function buyproduct() {
+  function buyproduct(e) {
     if (user.isLog) {
-      return <Navigate to="/shipping" />;
+      dispatch(setTotal(e.target.id))
+      console.log(card)
+      setGoOn(true)
+      
+      
     } else {
       setNeedToLog(true);
     }
+  }
+
+  if(GoOnState){
+    return <Navigate to="/shipping"  />
   }
 
   if (neddToLogState) {
@@ -54,6 +65,7 @@ function Cart(props) {
   return (
     <div className="   ">
       <Total cart={card.cardItems} />
+      
 
       <CartComp
         buyproduct={buyproduct}

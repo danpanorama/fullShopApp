@@ -3,6 +3,7 @@ import * as actionTypes from "../constants/productsConstant";
 const initialState = {
   items: [],
   singleItem:{},
+  comments:[]
  
 
 };
@@ -29,37 +30,44 @@ const products = (state = initialState, action) => {
       
      
       single.singleItem = action.data
+      single.comments= action.comments
 
       return single;
 
-
-    //   case actionTypes.REMOVE_COMMENT:
-    //     const remove_commend = {
-    //       ...state,
-    //     };
-    //     remove_commend.singleItem = action.data
-    //     return remove_commend;
-
-
-
-
-    //  case actionTypes.ADD_COMMENT:
-    //     const add_commend = {
-    //       ...state,
-    //     };
-    //    let json = JSON.parse(add_commend.singleItem.commends);
-    //     json = [...json, action.data];
-    //     let string = JSON.stringify(json);
-    //     add_commend.singleItem.commends = string;
-       
+      case actionTypes.ADD_COMMENT:
+        const addcomment = {
+          ...state,
+        };
+        
+        addcomment.comments= action.data[0]
   
-    //     return add_commend;
+        return addcomment;
+
+
+
+        case actionTypes.REMOVE_COMMENT:
+          const removeComment = {
+            ...state,
+          };
+         removeComment.comments =  removeComment.comments.filter(e => e.id != action.data );
+          
+
+          return removeComment;
+
 
       
     
 
   
-
+          case actionTypes.CLEAR_SINGLE_PRODUCT:
+            const clearSingle = {
+              ...state,
+            };
+            clearSingle.comments = [];
+            clearSingle.singleItem= {};
+            
+  
+            return clearSingle;
 
 
 

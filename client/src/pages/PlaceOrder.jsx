@@ -14,6 +14,8 @@ import { clear } from '../Redux/Actions/cartAction';
 function PlaceOrder(props) {
   const user =  useSelector((state)=>state.users); 
 const item =  useSelector((state)=>state.cart);
+const orders =  useSelector((state)=>state.orders);
+
 const dispatch = useDispatch();
 const [isbut,setisbuy] = useState(false)
 const [idid,setidid] = useState(0)
@@ -21,15 +23,18 @@ const [idid,setidid] = useState(0)
 let location = useLocation();
 console.log(item)
 
-async function buyItem(){
+async function buyItem(e){
   let cardItems = item.cardItems;
- 
+  let shipping = orders.shipping;
+  let paymethod = orders.payment
+  
 
-  let shipping = item.shipping;
+  
+
   await
   axiosConfig 
   .post("/users/neworder", 
-{  item:cardItems,shipping:shipping,user:user}
+{  item:cardItems,shipping:shipping,user:user,endPrice:item.total,paymethod:paymethod}
   )
   .then((res) => {
     if(res.data.err){
@@ -58,12 +63,12 @@ if(isbut){
 
   return (
     <div className="   ">
-       <CostumerInfo pyment={item.payment} user={user} item={item} />
+       <CostumerInfo pyment={orders.payment} user={user} order={orders} />
 
  <h1>placeordare</h1>
  <div className="flexrow flextop">
   <CartList item={item.cardItems} />
-  <Paybox class={"buybtn2 flexcenter "} btntext={'place order'} buyItem={buyItem} total={item.shipping.total}/>
+  <Paybox class={"buybtn2 flexcenter "} btntext={'place order'} buyItem={buyItem} total={item.total}/>
   
  </div>
 

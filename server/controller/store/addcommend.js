@@ -1,6 +1,7 @@
 const hapijoiCreate = require("../../auth/joi");
 const authbcrypt = require("../../auth/bcrypt");
-const products = require("../../models/sql/sqlpools");
+const mysql2 = require("../../models/sql/sqlBuy");
+
 const jwt = require("../../auth/jwt");
 const localStorage = require("localStorage");
 const crypto = require("crypto");
@@ -12,58 +13,25 @@ const addcommend = async (req, res, next) => {
     try {
         const date = await new Date();
         console.log(req.body)
-        let getProduct = await products.getProductById(req.body.itemId);
-        console.log(getProduct[0][0]);
-        let json = JSON.parse(getProduct[0][0].commends);
-        const id = crypto.randomBytes(16).toString("hex");
+        // let getProduct = await products.getProductById(req.body.itemId);
+        // console.log(getProduct[0][0]);
+        // let json = JSON.parse(getProduct[0][0].commends);
+        // const id = crypto.randomBytes(16).toString("hex");
 
-        let obj = {
-            name: req.body.name,
-            id: req.body.id,
-            text: req.body.text,
-            date:date,
-            commentid:id
-        }
+     
+    
+        let commentid = await mysql2.insertNewComment(req.body.name,req.body.itemId,req.body.rating,req.body.text,date,req.body.id)
 
-        json = [...json, obj]
-        console.log(json);
-        let updateCommend = await products.updateCommend(json,req.body.itemId)
-        let returnMyProduct = await products.getProductById(req.body.itemId);
+        // json = [...json, obj]
+        // console.log(json);
+        // let updateCommend = await products.updateCommend(json,req.body.itemId)
+        // let returnMyProduct = await products.getProductById(req.body.itemId);
 
-        console.log(updateCommend,returnMyProduct[0][0])
-        res.json({item:returnMyProduct[0][0]})
-        // if (CheckingStoreName[0].length > 0 && CheckingStoreName[0][0].isStore == 'yes') {
-
-
-
-        //   let updateItem = await products.updateProduct(
-        //     req.body.name,
-        //     req.body.description,
-        //     req.body.cat,
-        //     req.body.storeId,
-        //     req.body.price,
-        //     req.body.commends,
-        //     req.body.likes,
-        //     req.body.img, 
-        //     req.body.id,
-
-        //   );
-
-        //   if (updateItem) {
-
-        //     let items = await products.getProductById(req.body.id);
-        //     console.log(items[0][0])
-
-        //     res.json({
-        //       data: items[0][0]
-        //     });
-        //   }
-        // } else {
-        //   res.json({
-        //     msg: 'cannot find this store'
-        //   })
-        // }
-
+        // console.log(updateCommend,returnMyProduct[0][0])
+        let allcomments = await mysql2.getCommentById(req.body.itemId)
+       
+        res.json({allcommends:allcomments,msg:'comment was editing'})
+     
 
 
     } catch (e) {

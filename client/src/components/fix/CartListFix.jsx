@@ -12,7 +12,7 @@ function CartListFix(props) {
 <div className=" flexcenter ">
 {props.all.AllOrdersItems?props.all.AllOrdersItems.map((e,i)=>{
            
-           let immg = e.img?e.img.split('upload'):"";
+           let immg = e.productimage?e.productimage.split('upload'):"";
          
           
             return(

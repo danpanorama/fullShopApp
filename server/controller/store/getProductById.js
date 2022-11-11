@@ -15,9 +15,10 @@ try {
 
   let getProductById = await products.getProductById(req.body.id);
 
- 
+ req.products = getProductById[0][0]
+ next()
     
-    res.json({data:getProductById[0][0]});
+    // res.json({data:getProductById[0][0]});
   
   
 

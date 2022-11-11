@@ -7,14 +7,14 @@ const orders = require("../../models/sql/sqlBuy");
 const getOrderById = async (req, res, next) => {
 try {
   
-console.log(req.query,":::111::")
+
 
 
 
 
  
 
-  let getAllMyOrders = await orders.selectProductsOrderJoinById(req.query.id);
+  let getAllMyOrders = await orders.selectProdufctsOrderJoinById(req.query.id);
   
   
     res.json({data:getAllMyOrders[0]});

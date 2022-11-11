@@ -3,7 +3,7 @@ import '../../css/App.css'
 
 function Paybox(props) {
 
-let countnum;
+let countnum = 0;
 
     return (
     
@@ -16,7 +16,7 @@ let countnum;
         </div>
         <div className="flexrow between">
             <p className="title padding15">shipping</p>
-            <p className="answare padding15 ">10$ + {countnum =(props.total + 10 )}</p>
+            <p className="answare padding15  ">10$ + {countnum =(props.total + 10 )}</p>
         </div>
         <div className="flexrow between borderbottom">
             <p className="title padding15">tax</p>
@@ -31,7 +31,7 @@ let countnum;
 
     </div>
  
-   <div onClick={props.buyItem} className={props.class}>
+   <div onClick={props.buyItem} coast={countnum} className={props.class}>
            {props.btntext}
         </div>
    

@@ -7,7 +7,8 @@ import {
   ADD_COMMENT,
   SINGLE_PRODUCT,
   SET_PRODUCTS,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  CLEAR_SINGLE_PRODUCT
 } from '../constants/productsConstant'
 
 import axiosConfig from "../../config/AxiosConfig";
@@ -72,14 +73,14 @@ export const addComment = (data) => async (dispatch) => {
 
           // dispatch({type:ADD_COMMENT,data:data})
 
-          console.log('hayther sexy ass')
+
           dispatch({
             type: GOOD_MESSAGE,
             data: "commend was add"
           })
           dispatch({
-            type: SINGLE_PRODUCT,
-            data: res.data.item
+            type: ADD_COMMENT,
+            data: res.data.allcommends
           })
 
 
@@ -115,9 +116,9 @@ export const removeComment = (data) => async (dispatch) => {
     await
 
     axiosConfig
-      .post("/product/removecommend",
-        data
-      )
+      .post("/product/removecommend", {
+        id: data
+      })
       .then((res) => {
         if (res.data.err) {
           return dispatch({
@@ -131,13 +132,13 @@ export const removeComment = (data) => async (dispatch) => {
 
 
           dispatch({
-            type: SINGLE_PRODUCT,
-            data: res.data.item
+            type: REMOVE_COMMENT,
+            data: data
           })
 
           dispatch({
             type: GOOD_MESSAGE,
-            data: "you remove commend"
+            data: "you remover commend"
           })
 
         }
@@ -156,6 +157,21 @@ export const removeComment = (data) => async (dispatch) => {
     dispatch({
       type: PRODUCT_FAIL,
       payload: e.response && e.response.data.message ? e.response.data.message : e.message,
+    })
+  }
+}
+
+export const clearState = (data) => async (dispatch) => {
+  try {
+
+    dispatch({
+      type: CLEAR_SINGLE_PRODUCT
+    })
+
+  } catch (e) {
+    dispatch({
+      type: ERROR,
+      data: e.message
     })
   }
 }
@@ -187,7 +203,8 @@ export const singleProductPage = (data) => async (dispatch) => {
 
           dispatch({
             type: SINGLE_PRODUCT,
-            data: res.data.data
+            data: res.data.data.products,
+            comments: res.data.data.comments
           })
 
 

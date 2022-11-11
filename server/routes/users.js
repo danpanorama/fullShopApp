@@ -3,7 +3,7 @@ var router = express.Router();
 const newOrder = require("../controller/user/newOrder");
 const getMyOrders = require('../controller/user/getMyOrders');
 const getOrderById = require('../controller/user/getOrderById');
-const pay = require('../controller/user/pay');
+const pay = require('../controller/user/pay'); 
 const { likeProduct } = require('../controller/user/likeProduct');
 
 
@@ -15,7 +15,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/getmyorders',getMyOrders.getMyOrders, function(req, res, next) {
 });
-router.get('/getorderbyid',getOrderById.getOrderById, function(req, res, next) {
+router.get('/getorderbyid',getOrderById.getOrderById, function(req, res, next) { 
 });
 router.get('/getorders',getMyOrders.getMyOrders, function(req, res, next) {
 });

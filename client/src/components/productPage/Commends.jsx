@@ -16,14 +16,14 @@ function Commends(props) {
             <div className="commendsSIde">
               <h2>commends</h2>
               <div className="commendsbox">
-                {props.product.commends &&props.product.commends.length > 0? 
-                JSON.parse(props.product.commends).map((e,i)=>{
+                {props.comments &&props.comments.length > 0? 
+                props.comments.map((e,i)=>{
                 return(
                 <div key={e.id+i} className="commend">
                   
               <div className="padright_commend ">
-              {e.id == props.id ? 
-                <div><p title={JSON.stringify(e)} onClick={props.remove}>X</p></div>  
+              {e.userid == props.id ? 
+                <div><p id={e.id} onClick={props.remove}>X</p></div>  
                :"" }
               <div className="flexrow commendcurcule"><div className="circule"></div>
                 <p className="namecommend">{e.name}</p>

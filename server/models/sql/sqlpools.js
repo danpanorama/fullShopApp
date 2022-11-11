@@ -189,7 +189,7 @@ const updateLikes = (like, id) => {
 
 const updateOrderPay = (ispaid,datepaid, id) => {
   return pool.execute(
-    `UPDATE storeapp.order 
+    `UPDATE storeapp.neworder 
     SET 
     ispaid = ? , datepaid = ?
    
@@ -224,7 +224,7 @@ const getMyOrder = (id) => {
 };
 
 const getMyOrderByOrderId = (id) => {
-  return pool.execute(`SELECT * FROM storeapp.order WHERE id = ? `, [id]);
+  return pool.execute(`SELECT * FROM storeapp.neworder WHERE id = ? `, [id]);
 };
 
 

@@ -13,3 +13,5 @@ export const SET_SINGLE_ITEM = "SET_SINGLE_ITEM";
 
 export const SET_ORDER_READY = "SET_ORDER_READY";
 
+
+export const SET_TOTAL = "SET_TOTAL";

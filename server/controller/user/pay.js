@@ -1,15 +1,16 @@
 const hapijoiCreate = require("../../auth/joi");
 const authbcrypt = require("../../auth/bcrypt");
 const products = require("../../models/sql/sqlpools");
+const mysql2 = require("../../models/sql/sqlBuy");
+
 const jwt = require("../../auth/jwt");
 const localStorage = require("localStorage");
 
 
 const pay = async (req, res, next) => {
     try {
-        console.log(req.body.id)
         let yourDate = new Date()
-        yourDate.toISOString().split('T')[0]
+      let date =  yourDate.toISOString().split('T')[0]
 
 
         let getOrder = await products.getMyOrderByOrderId(req.body.id);
@@ -19,17 +20,17 @@ const pay = async (req, res, next) => {
             let ispaid = 'yes'
 
             let updateItem = await products.updateOrderPay(
-                ispaid,  yourDate, req.body.id
+                ispaid,  date, req.body.id
 
             );
 
             if (updateItem) {
 
-                let items = await products.getMyOrderByOrderId(req.body.id);
-                console.log(items[0][0])
+                let getAllMyOrders = await mysql2.selectProdufctsOrderJoinById(req.body.id);
+                
 
                 res.json({
-                    data: items[0][0]
+                    data: getAllMyOrders[0]
                 });
             }
         } else {

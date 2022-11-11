@@ -3,7 +3,7 @@ import "../css/home.css";
 import { useDispatch, useSelector } from "react-redux";
 import Storecomp from "../components/store/Storecomp";
 import { useEffect, useState } from "react";
-import { getStoreProducts } from "../Redux/Actions/productsAction";
+import { clearState, getStoreProducts } from "../Redux/Actions/productsAction";
 import Pagination from "../components/pagenation/Pagination";
 
 
@@ -17,6 +17,7 @@ function Store() {
 
   useEffect(() => {
     dispatch(getStoreProducts());
+    dispatch(clearState())
   }, []);
 const indexOfLastProduct = currentPage * arrayPerPage;
 const indexOfFirstProduct = indexOfLastProduct - arrayPerPage;

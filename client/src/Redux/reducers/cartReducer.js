@@ -3,9 +3,8 @@ import * as actionTypes from "../constants/cartConstante";
 const initialState = {
 
   cardItems: [],
-  shipping: {},
-  payment:{},
-  total:0
+  total:0,
+
 };
 
 const reducer = (state = initialState, action) => {
@@ -19,20 +18,11 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
       clear_cart.cardItems = [];
-      clear_cart.shipping = {}
       localStorage.setItem("card", undefined);
-      localStorage.setItem('address', undefined);
       return clear_cart;
 
 
-    case actionTypes.ADD_SHIPPING:
-      const add_shipping = {
-        ...state,
-      };
-      add_shipping.shipping = action.data;
-      let json = JSON.stringify(action.data)
-      localStorage.setItem("address", json);
-      return add_shipping;
+
 
 
 
@@ -56,8 +46,11 @@ const reducer = (state = initialState, action) => {
           product.cardItems = [...product.cardItems, action.data];
         }
       }
+
+      // storing data on local storage just for case the user reload the page 
       let safeReload = JSON.stringify(product.cardItems);
       localStorage.setItem("card", safeReload);
+
       return product;
 
 
@@ -113,7 +106,11 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
       if (action.data) {
+
         let arr = removeAllProduct.cardItems.filter((ele) => {
+          removeAllProduct.total =   (ele.price * ele.amount)- removeAllProduct.total;
+
+
           return ele.id != action.data;
         });
         removeAllProduct.cardItems = arr;
@@ -134,7 +131,7 @@ const reducer = (state = initialState, action) => {
         ...state,
       };
       let data = localStorage.getItem('card');
-      let address = localStorage.getItem('address');
+  
 
 
       if (data == undefined || data == "undefined") {
@@ -146,32 +143,21 @@ const reducer = (state = initialState, action) => {
       }
 
 
-      if (address == undefined || address == "undefined") {
-        return setState
-      } else {
-        let dataaddress = JSON.parse(address);
-        setState.shipping = dataaddress
-      }
 
       return setState;
 
 
-      case actionTypes.ADD_PAYMENT:
-        const payState = {
-          ...state,
-        };
-        let yourDate = new Date()
-        let date = yourDate.toISOString().split('T')[0];
+ case actionTypes.SET_TOTAL:
+      const setTotal = {
+        ...state,
+      };
+      setTotal.total = Number(action.data)
 
-        
 
-        payState.payment = {
-          "date":date,
-          "type":action.data,
-        'ispaid':"no"}
-  
-        return payState;
- 
+
+      return setTotal;
+
+     
 
 
     default:

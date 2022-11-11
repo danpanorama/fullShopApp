@@ -11,12 +11,14 @@ const newOrder = async (req, res, next) => {
        let yourDate = new Date()
      
         yourDate.toISOString().split('T')[0]
+
+       
       
 
         let inseretNewOrder = await neworder.insertNewOrders(
             req.body.user.user.id,
             req.body.shipping.address,
-            req.body.shipping.total,
+            req.body.endPrice,
             ispaid,
             dateoo,
             "no",
@@ -52,16 +54,36 @@ let array_p = []
               )
           }
 
-let at = [array_p]
-let ct = []
-ct.push(at);
+// let at = [array_p]
+// let ct = []
+// let gog = []
 
+// ct.push(at);
+// gog.push(ct)
 
+const mysql = require("mysql2");
 
-          await neworder.insertNewProductOrders( ct );
+let pool = mysql.createPool({
+  host: "localhost",
+  user: "root",
+  password: "12344",
+  database: "storeapp",
+  waitForConnections: true, 
+  connectionLimit: 10,
+  queueLimit: 0,
+});
+
+var sql = 'INSERT INTO storeapp.orderproducts(orderid, name, amount, productid, productprice, productname, productimage, productdesc, productcat, oneprodtotalprice) VALUES ? '
+
+ pool.query(sql, [array_p], function(err) {
+  if (err) throw err;
+  pool.end();
+});
+
+          // await neworder.insertNewProductOrders2(ct);
 
     
-// res.json({id:inseretNewOrder[0].insertId})
+res.json({id:inseretNewOrder[0].insertId})
 
 
     } catch (e) {

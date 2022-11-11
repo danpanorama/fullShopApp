@@ -8,6 +8,7 @@ const update = require('../controller/store/updateProduct');
 const addcommend = require('../controller/store/addcommend');
 const remove = require('../controller/store/removeCommend');
 const getproductbyid = require('../controller/store/getProductById');
+const getProductComments = require('../controller/store/getProductcomments')
 const jwtPass = require('../middleware/token')
 
 const multer = require('multer');
@@ -128,7 +129,7 @@ if(req.file){
 
   router.post('/addcommend',addcommend.addcommend, function(req, res, next) {
     console.log(req.body)
-
+ 
  });
 
  router.post('/removecommend',remove.removeCommend, function(req, res, next) {
@@ -136,7 +137,7 @@ if(req.file){
 
 });
 
-router.post('/getproductbyid',getproductbyid.getProductById, function(req, res, next) {
+router.post('/getproductbyid',getproductbyid.getProductById,getProductComments.getProductComments , function(req, res, next) {
   console.log(req.body)
 
 });

@@ -7,14 +7,16 @@ import {useDispatch,useSelector} from "react-redux";
 import * as actionTypes from "../store/Actions";
 import { useState } from 'react';
 import { useLocation } from "react-router-dom";
-import {addShipping} from '../Redux/Actions/cartAction'
+import {addShipping, setTotal} from '../Redux/Actions/cartAction'
 
 function Shipping(props) {
   const dispatch = useDispatch(); 
   const [moveToPay,setMoveToPay] = useState(false)
   let location = useLocation();
   const item =  useSelector((state)=>state.cart);
-  let data =item.shipping
+  const order =  useSelector((state)=>state.orders);
+
+  let data =order.shipping
 
  
   const shipping = useFormik({
@@ -34,6 +36,7 @@ function Shipping(props) {
     try{
     
       if(values.address=="" || values.country=="" || values.state =="" || values.zipcode ==""){
+       
         dispatch({type:actionTypes.BAD_MESSAGE,data:"must fill the information below"});
 
       }else{

@@ -47,7 +47,7 @@ function NavRoute() {
 <Route path="/shipping" element={<Shipping/>} exact/>
 </Route>
 
-<Route path="//order/:id" element={ <PrivateRoute />} exact> 
+<Route path="/order/:id" element={ <PrivateRoute />} exact> 
 <Route path="/order/:id" element={ <OrderFix />} exact/> 
 </Route>
 

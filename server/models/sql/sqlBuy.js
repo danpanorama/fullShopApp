@@ -17,9 +17,27 @@ const deleteComment = (id, userid) => {
     WHERE id = ?, userid = ?`,
     [id, userid]
   );
+  }
+
+  const removeComment = (id) => {
+    return pool.execute(
+      `DELETE FROM comments 
+      WHERE id = ?`,
+      [id]
+    );
 
 
 };
+const getCommentById = (id) => {
+  return pool.execute(
+    `SELECT * FROM comments 
+    WHERE productid = ?`,
+    [id]
+  );
+
+
+};
+
 
 // inseret comments section done
 
@@ -29,7 +47,7 @@ const deleteComment = (id, userid) => {
 const insertNewOrders = (clientid, adress, price, ispaid, datepaid, isdeliverd, datedeliverd, date, addres2, clientemail,clientname, state, country, phon, zipcode) => {
   return pool.execute(
     `INSERT INTO neworder 
-    (clientid, adress, price, ispaid, datepaid,
+    (clientid, adress, totalprice, ispaid, datepaid,
       isdeliverd, datedeliverd, date, addres2,
        clientemail,clientname, state, country, phon, zipcode) 
     VALUES 
@@ -39,41 +57,6 @@ const insertNewOrders = (clientid, adress, price, ispaid, datepaid, isdeliverd, 
         clientemail,clientname, state, country, phon, zipcode]
   );
 };
-// const insertNewProductOrders = (values) => {
-//   return pool.execute(
-//     `INSERT INTO storeapp.orderproducts 
-//     (orderid,name,amount,productid,productprice,
-//       productname,productimage,productdesc,productcat,
-//       totalprice) 
-//     VALUES  ? `,
-//     [values] 
-//   );
-// };
-
-const insertNewProductOrders = (values) => {
-  return pool.execute(
-    `INSERT INTO storeapp.orderproducts (orderid,name,amount,productid,productprice,productname,productimage,productdesc,productcat,totalprice) VALUES ? `,
-    [values]
-  );
-};
-
-// inseret orders sections done
-
-
-
-// inseret orders sections 
-
-// inseret products order section
-// const insertNewProductOrders = (orderid, name, amount, price, productid, productprice, productname, productimage, productdesc, productcat, totalprice) => {
-//   return pool.execute(
-//     `INSERT INTO orderproducts 
-//     (orderid,name,amount,price,productid,productprice,productname,productimage,productdesc,productcat,totalprice) 
-//     VALUES 
-//     (?,?,?,?,?,?,?,?,?,?,?)`,
-//     [orderid, name, amount, price, productid, productprice, productname, productimage, productdesc, productcat, totalprice]
-//   );
-// };
-
 
 
 
@@ -101,6 +84,16 @@ const selectOrderJoinTables = (id) => {
   From orderproducts 
   INNER JOIN neworder 
   ON orderproducts.orderid = neworder.id where clientid = ? `, [id]);
+};
+
+
+const selectProdufctsOrderJoinById = (id) => {
+  return pool.execute(`SELECT *
+  From neworder 
+  INNER JOIN  orderproducts ON neworder.id = orderproducts.orderid 
+  INNER JOIN  products ON orderproducts.productid = products.id 
+  
+  where neworder.id  = ? `,[id]);
 };
 
 //////////////////////////////////////////////////
@@ -238,7 +231,12 @@ const getMyOrderByOrderId = (id) => {
 
 module.exports.selectOrderJoinTables = selectOrderJoinTables;
 module.exports.selectOrderByClientId = selectOrderByClientId;
+// module.exports.insertNewProductOrders2 = insertNewProductOrders2;
 
+
+
+
+module.exports.removeComment = removeComment;
 
 
 
@@ -282,8 +280,15 @@ module.exports.insertNewOrder2 = insertNewOrder2;
 
 module.exports.insertNewOrders = insertNewOrders;
 
-module.exports.insertNewProductOrders = insertNewProductOrders;
+// module.exports.insertNewProductOrders = insertNewProductOrders;
 
 module.exports.deleteComment = deleteComment;
 
 module.exports.insertNewComment = insertNewComment;
+module.exports.getCommentById = getCommentById;
+
+
+module.exports.selectProdufctsOrderJoinById = selectProdufctsOrderJoinById;
+
+
+  

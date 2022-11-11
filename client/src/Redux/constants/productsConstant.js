@@ -7,5 +7,9 @@ export const ADD_COMMENT = "ADD_COMMENT";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 
 export const SINGLE_PRODUCT = "SINGLE_PRODUCT";
+export const CLEAR_SINGLE_PRODUCT = "CLEAR_SINGLE_PRODUCT";
+
+
+
 
 
