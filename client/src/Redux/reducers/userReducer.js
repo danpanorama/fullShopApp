@@ -21,9 +21,9 @@ const reducer = (state = initialState, action) => {
     
     case actionTypes.LOGIN:
         const newState = {...state}; 
-        console.log(action.data)
         let userinfostring = JSON.stringify(action.data.userInfo);
         localStorage.setItem('user',userinfostring)
+        localStorage.setItem('card',undefined)
 
 
          newState.user = action.data.userInfo;

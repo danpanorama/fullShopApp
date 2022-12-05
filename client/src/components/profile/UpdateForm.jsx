@@ -17,6 +17,8 @@ function UpdateForm(props) {
           onSubmit={props.updateUser.handleSubmit}
         >
         <div className=" ">
+      <div className="flexrow">
+      <label htmlFor="">name</label>
         <input
             type="text"
             label="name"
@@ -28,6 +30,9 @@ function UpdateForm(props) {
             value={props.updateUser.values.name}
 
           />
+      </div>
+    <div className="flexrow">
+    <label htmlFor="">email</label>
           <input
             type="email"
             label="email*"
@@ -38,8 +43,11 @@ function UpdateForm(props) {
             onChange={props.updateUser.handleChange}
             value={props.updateUser.values.email}
           />
+    </div>
         </div>
-          <input
+    <div className="flexrow">
+    <label htmlFor="">old password</label>
+    <input
             type="password"
             label="password"
             placeholder='pass'
@@ -49,16 +57,21 @@ function UpdateForm(props) {
             values={props.updateUser.values.password}
             onChange={props.updateUser.handleChange}
           />
-          <input
+
+    </div>
+      <div className="flexrow">
+        <label htmlFor="">new password</label>
+        <input
             type="password"
             label="password"
-            placeholder='pass repeat'
+            placeholder='new password'
             className="inputuser"
-            name="passwordreapet"
+            name="newpassword"
             
-            values={props.updateUser.values.passwordreapet}
+            values={props.updateUser.values.newpassword}
             onChange={props.updateUser.handleChange}
           />
+      </div>
 
           <div className="flexRow">
             remember me

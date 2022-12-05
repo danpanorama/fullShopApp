@@ -26,7 +26,7 @@ function Commends(props) {
                 <div><p id={e.id} onClick={props.remove}>X</p></div>  
                :"" }
               <div className="flexrow commendcurcule"><div className="circule"></div>
-                <p className="namecommend">{e.name}</p>
+                <p className="namecommend">{e.username}</p>
                
                 </div>
                 <p className="fs10">{e.date}</p>

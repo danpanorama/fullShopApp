@@ -11,6 +11,8 @@ import axiosConfig from "../config/AxiosConfig"
 import MyOrders from '../components/profile/MyOrders';
 
 import Pagination from '../components/pagenation/Pagination';
+import { updateInfo } from '../Redux/Actions/userAction';
+import { messageAction } from '../Redux/Actions/errAction';
 function Profile() {
     const [errState, setErrState] = useState("");
     const dispatch = useDispatch();
@@ -31,25 +33,29 @@ function Profile() {
 
     const updateUser = useFormik({
       initialValues:{
+        number:user.user.id,
         password: "",
-        passwordreapet:'',
+        newpassword:'',
         name: user.user.name,
         email: user.user.email,
         remember: false,
     },onSubmit:async values  => {
       try{
+        
          await
         axiosConfig
         .post("/register/updateuser", 
         values
         )
         .then((res) => {
-          if(res.data.err){
-          return setErrState(res.data.err);
+          if(res.data.err || res.data.msg){
+            dispatch(messageAction({msg:res.data.err,type:'bad'}))
+          
   
           }else{
           
               setErrState("");
+              dispatch(updateInfo(res.data))
               
           }
         })

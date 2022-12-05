@@ -10,6 +10,9 @@
     width: 100% !important
     ;
 }
+.paddpage{
+    width: 98% !important;
+}
 }
 
 @media screen and (max-width: 800px) {

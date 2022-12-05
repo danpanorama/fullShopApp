@@ -44,3 +44,15 @@ export const stillConnected = (data) => async (dispatch)=>{
     }
 }
 
+export const updateInfo = (data) => async (dispatch)=>{
+    try{
+        dispatch({type:LOGIN,data:data});
+
+    }catch(e){
+        dispatch({
+            type:ERROR,
+            payload:e.response && e.response.data.message ?e.response.data.message 
+            : e.message,
+        })
+    }
+}
