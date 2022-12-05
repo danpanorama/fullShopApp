@@ -11,6 +11,10 @@ const cheakUserName = (name) => {
   return pool.execute(`SELECT * FROM users WHERE name = ? `, [name]);
 };
 
+const SelectUserById = (number) => {
+  return pool.execute(`SELECT * FROM users WHERE id = ? `, [number]);
+};
+
 const cheakStorerName = (name) => {
   return pool.execute(
     `SELECT * FROM users WHERE name = ? AND isStore = 'yes'`,
@@ -98,14 +102,13 @@ const getUserById = (id) => {
   return pool.execute(`SELECT * FROM users  WHERE id = ? `, [id]);
 };
 
-const updateUser = (password, userName, email, phon, view, userID) => {
+const updateUser = (password, userName, email, number) => {
   return pool.execute(
     `UPDATE users 
     SET password = ?,
-    name =?,email =?,
-    phon=?,view=?
-    WHERE number = ? `,
-    [password, userName, email, phon, view, userID]
+    name =?,email =?
+    WHERE id = ? `,
+    [password, userName, email, number]
   );
 };
 
@@ -243,6 +246,8 @@ module.exports.updateProductWithoutImage = updateProductWithoutImage;
 module.exports.selectUser = selectUser;
 module.exports.selectUserById = selectUserById;
 module.exports.updateLikes = updateLikes;
+module.exports.SelectUserById = SelectUserById;
+
 
 module.exports.updateOrderPay = updateOrderPay;
 
